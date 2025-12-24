@@ -1348,6 +1348,63 @@
         }
         
         /* ============================================
+           WYCENA MODAL
+           ============================================ */
+        .wycena-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .wycena-modal.is-open {
+            display: flex;
+        }
+        
+        .wycena-modal__content {
+            background-color: var(--color-white);
+            max-width: 600px;
+            width: 100%;
+            border-radius: var(--radius);
+            padding: 40px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .wycena-modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .wycena-modal__header h3 {
+            margin: 0;
+            color: var(--color-dark-green);
+        }
+        
+        .wycena-modal__close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-gray-600);
+            padding: 4px;
+            line-height: 1;
+        }
+        
+        .wycena-modal__close:hover {
+            color: var(--color-text);
+        }
+        
+        /* ============================================
            RESPONSIVE
            ============================================ */
         @media (max-width: 1024px) {
@@ -1462,6 +1519,20 @@
             .footer__content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            /* Wycena modal mobile */
+            .wycena-modal__content {
+                padding: 24px;
+                max-height: 95vh;
+            }
+            
+            .wycena-modal__content .form-group {
+                margin-bottom: 16px;
+            }
+            
+            .wycena-modal__content div[style*="grid-template-columns: 1fr 1fr"] {
+                display: block !important;
             }
             
             /* Cookie banner mobile */
@@ -1819,7 +1890,7 @@
                         <li class="pricing-card__feature">e-akta + e-lista obecności</li>
                         <li class="pricing-card__feature">Faktury online + KSeF</li>
                     </ul>
-                    <a href="#wycena" class="btn btn--primary">Wybierz pakiet</a>
+                    <button type="button" class="btn btn--primary btn-wycena" data-pakiet="START (od 199 zł)">Wybierz pakiet</button>
                 </div>
                 
                 <div class="pricing-card">
@@ -1836,7 +1907,7 @@
                         <li class="pricing-card__feature">e-akta + e-lista obecności</li>
                         <li class="pricing-card__feature">Faktury online + KSeF</li>
                     </ul>
-                    <a href="#wycena" class="btn btn--primary">Wybierz pakiet</a>
+                    <button type="button" class="btn btn--primary btn-wycena" data-pakiet="STANDARD (od 349 zł)">Wybierz pakiet</button>
                 </div>
                 
                 <div class="pricing-card pricing-card--featured">
@@ -1853,7 +1924,7 @@
                         <li class="pricing-card__feature">Kadry i płace: do 2 osób</li>
                         <li class="pricing-card__feature">Faktury online + KSeF</li>
                     </ul>
-                    <a href="#wycena" class="btn btn--primary">Wybierz pakiet</a>
+                    <button type="button" class="btn btn--primary btn-wycena" data-pakiet="E-COMMERCE (od 599 zł)">Wybierz pakiet</button>
                 </div>
                 
                 <div class="pricing-card">
@@ -1870,7 +1941,7 @@
                         <li class="pricing-card__feature">Kadry i płace: do 2 osób</li>
                         <li class="pricing-card__feature">Faktury online + KSeF</li>
                     </ul>
-                    <a href="#wycena" class="btn btn--primary">Wybierz pakiet</a>
+                    <button type="button" class="btn btn--primary btn-wycena" data-pakiet="SPÓŁKA (od 899 zł)">Wybierz pakiet</button>
                 </div>
             </div>
             
@@ -1878,109 +1949,15 @@
                 <strong>Stała cena</strong> obowiązuje w ramach wybranego pakietu (progi dokumentów i zatrudnienia). Dopłaty mogą dotyczyć wyłącznie przekroczeń progów lub usług niestandardowych — zawsze ustalanych z góry.<br>
                 Reprezentacja przed KAS/ZUS w ramach bieżącej obsługi rozliczeń. Dodatkowy pracownik powyżej 2: <strong>+59 zł netto / mies.</strong>
             </div>
-        </div>
-    </section>
-    
-    <!-- ============================================
-         FORMULARZ WYCENY
-         ============================================ -->
-    <section class="section" id="wycena">
-        <div class="container">
-            <div class="section__header">
-                <h2>Zamów bezpłatną wycenę</h2>
-                <p class="section__subtitle">Wypełnij formularz, a przygotujemy indywidualną ofertę dla Twojej firmy</p>
-            </div>
             
-            <div style="max-width: 700px; margin: 0 auto;">
-                <form class="contact__form" action="https://api.web3forms.com/submit" method="POST" style="background: var(--color-white); padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-md);">
-                    <input type="hidden" name="access_key" value="80c109c6-8089-44e0-91c9-1169d3ae6a2e">
-                    <input type="hidden" name="subject" value="Nowe zgłoszenie wyceny - ebiuro24.pl">
-                    <input type="hidden" name="from_name" value="EURO-TAX Wycena">
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    
-                    <div class="form-group">
-                        <label for="wycena-pakiet" class="form-label">Interesujący pakiet *</label>
-                        <select id="wycena-pakiet" name="pakiet" class="form-input" required>
-                            <option value="">-- Wybierz pakiet --</option>
-                            <option value="START (od 199 zł)">Pakiet START (od 199 zł)</option>
-                            <option value="STANDARD (od 349 zł)">Pakiet STANDARD (od 349 zł)</option>
-                            <option value="E-COMMERCE (od 599 zł)">Pakiet E-COMMERCE (od 599 zł)</option>
-                            <option value="SPÓŁKA (od 899 zł)">Pakiet SPÓŁKA (od 899 zł)</option>
-                            <option value="Nie wiem - proszę o pomoc w wyborze">Nie wiem - proszę o pomoc w wyborze</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="wycena-forma" class="form-label">Forma działalności *</label>
-                        <select id="wycena-forma" name="forma_dzialalnosci" class="form-input" required>
-                            <option value="">-- Wybierz formę --</option>
-                            <option value="JDG - jednoosobowa działalność">JDG - jednoosobowa działalność</option>
-                            <option value="Sp. z o.o.">Sp. z o.o.</option>
-                            <option value="Spółka cywilna">Spółka cywilna</option>
-                            <option value="Inna">Inna</option>
-                            <option value="Dopiero planuję założyć">Dopiero planuję założyć</option>
-                        </select>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="form-group">
-                            <label for="wycena-dokumenty" class="form-label">Liczba dokumentów / mies.</label>
-                            <select id="wycena-dokumenty" name="dokumenty_miesiecznie" class="form-input">
-                                <option value="">-- Wybierz --</option>
-                                <option value="do 10">do 10</option>
-                                <option value="11-20">11-20</option>
-                                <option value="21-50">21-50</option>
-                                <option value="51-100">51-100</option>
-                                <option value="powyżej 100">powyżej 100</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="wycena-pracownicy" class="form-label">Liczba pracowników</label>
-                            <select id="wycena-pracownicy" name="liczba_pracownikow" class="form-input">
-                                <option value="">-- Wybierz --</option>
-                                <option value="0 (tylko właściciel)">0 (tylko właściciel)</option>
-                                <option value="1-2">1-2</option>
-                                <option value="3-5">3-5</option>
-                                <option value="6-10">6-10</option>
-                                <option value="powyżej 10">powyżej 10</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="wycena-branza" class="form-label">Branża / rodzaj działalności</label>
-                        <input type="text" id="wycena-branza" name="branza" class="form-input" placeholder="np. e-commerce, usługi IT, budowlanka...">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="wycena-name" class="form-label">Imię i nazwisko *</label>
-                        <input type="text" id="wycena-name" name="imie_nazwisko" class="form-input" required>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="form-group">
-                            <label for="wycena-email" class="form-label">Email *</label>
-                            <input type="email" id="wycena-email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="wycena-phone" class="form-label">Telefon *</label>
-                            <input type="tel" id="wycena-phone" name="telefon" class="form-input" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="wycena-uwagi" class="form-label">Dodatkowe uwagi</label>
-                        <textarea id="wycena-uwagi" name="uwagi" class="form-textarea" rows="3" placeholder="Np. kiedy planujesz start, czy masz pytania..."></textarea>
-                    </div>
-                    
-                    <div class="form-rodo">
-                        Administratorem danych osobowych jest EURO-TAX Biuro Rachunkowe. Dane przetwarzamy w celu przygotowania wyceny i kontaktu na podstawie prawnie uzasadnionego interesu (art. 6 ust. 1 lit. f RODO). Szczegóły w <a href="polityka-prywatnosci.html">Polityce prywatności</a>.
-                    </div>
-                    
-                    <button type="submit" class="btn btn--primary form-submit">Wyślij zgłoszenie</button>
-                </form>
+            <!-- Kafelek "Nie wiem" -->
+            <div style="max-width: 280px; margin: 30px auto 0; text-align: center;">
+                <div class="pricing-card" style="padding: 24px 20px; border-style: dashed;">
+                    <div class="pricing-card__badge" style="background-color: var(--color-gray-600);">?</div>
+                    <h3 class="pricing-card__name" style="font-size: 1.25rem;">Nie wiem, który pakiet</h3>
+                    <p style="font-size: 0.9375rem; color: var(--color-gray-600); margin-bottom: 20px;">Pomożemy dobrać najlepszą opcję dla Twojej firmy</p>
+                    <button type="button" class="btn btn--primary btn-wycena" data-pakiet="Nie wiem - proszę o pomoc w wyborze" style="width: 100%;">Proszę o pomoc</button>
+                </div>
             </div>
         </div>
     </section>
@@ -2383,6 +2360,108 @@
     </footer>
     
     <!-- ============================================
+         MODAL WYCENY
+         ============================================ -->
+    <div class="wycena-modal" id="wycenaModal">
+        <div class="wycena-modal__content">
+            <div class="wycena-modal__header">
+                <h3>Zamów bezpłatną wycenę</h3>
+                <button class="wycena-modal__close" id="wycenaModalClose">&times;</button>
+            </div>
+            
+            <form class="contact__form" action="https://api.web3forms.com/submit" method="POST" style="padding: 0;">
+                <input type="hidden" name="access_key" value="80c109c6-8089-44e0-91c9-1169d3ae6a2e">
+                <input type="hidden" name="subject" value="Nowe zgłoszenie wyceny - ebiuro24.pl">
+                <input type="hidden" name="from_name" value="EURO-TAX Wycena">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
+                <div class="form-group">
+                    <label for="wycena-pakiet" class="form-label">Interesujący pakiet *</label>
+                    <select id="wycena-pakiet" name="pakiet" class="form-input" required>
+                        <option value="">-- Wybierz pakiet --</option>
+                        <option value="START (od 199 zł)">Pakiet START (od 199 zł)</option>
+                        <option value="STANDARD (od 349 zł)">Pakiet STANDARD (od 349 zł)</option>
+                        <option value="E-COMMERCE (od 599 zł)">Pakiet E-COMMERCE (od 599 zł)</option>
+                        <option value="SPÓŁKA (od 899 zł)">Pakiet SPÓŁKA (od 899 zł)</option>
+                        <option value="Nie wiem - proszę o pomoc w wyborze">Nie wiem - proszę o pomoc w wyborze</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="wycena-forma" class="form-label">Forma działalności *</label>
+                    <select id="wycena-forma" name="forma_dzialalnosci" class="form-input" required>
+                        <option value="">-- Wybierz formę --</option>
+                        <option value="JDG - jednoosobowa działalność">JDG - jednoosobowa działalność</option>
+                        <option value="Sp. z o.o.">Sp. z o.o.</option>
+                        <option value="Spółka cywilna">Spółka cywilna</option>
+                        <option value="Inna">Inna</option>
+                        <option value="Dopiero planuję założyć">Dopiero planuję założyć</option>
+                    </select>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="wycena-dokumenty" class="form-label">Liczba dokumentów / mies.</label>
+                        <select id="wycena-dokumenty" name="dokumenty_miesiecznie" class="form-input">
+                            <option value="">-- Wybierz --</option>
+                            <option value="do 10">do 10</option>
+                            <option value="11-20">11-20</option>
+                            <option value="21-50">21-50</option>
+                            <option value="51-100">51-100</option>
+                            <option value="powyżej 100">powyżej 100</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wycena-pracownicy" class="form-label">Liczba pracowników</label>
+                        <select id="wycena-pracownicy" name="liczba_pracownikow" class="form-input">
+                            <option value="">-- Wybierz --</option>
+                            <option value="0 (tylko właściciel)">0 (tylko właściciel)</option>
+                            <option value="1-2">1-2</option>
+                            <option value="3-5">3-5</option>
+                            <option value="6-10">6-10</option>
+                            <option value="powyżej 10">powyżej 10</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="wycena-branza" class="form-label">Branża / rodzaj działalności</label>
+                    <input type="text" id="wycena-branza" name="branza" class="form-input" placeholder="np. e-commerce, usługi IT, budowlanka...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="wycena-name" class="form-label">Imię i nazwisko *</label>
+                    <input type="text" id="wycena-name" name="imie_nazwisko" class="form-input" required>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label for="wycena-email" class="form-label">Email *</label>
+                        <input type="email" id="wycena-email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="wycena-phone" class="form-label">Telefon *</label>
+                        <input type="tel" id="wycena-phone" name="telefon" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="wycena-uwagi" class="form-label">Dodatkowe uwagi</label>
+                    <textarea id="wycena-uwagi" name="uwagi" class="form-textarea" rows="3" placeholder="Np. kiedy planujesz start, czy masz pytania..."></textarea>
+                </div>
+                
+                <div class="form-rodo">
+                    Administratorem danych osobowych jest EURO-TAX Biuro Rachunkowe. Dane przetwarzamy w celu przygotowania wyceny i kontaktu na podstawie prawnie uzasadnionego interesu (art. 6 ust. 1 lit. f RODO). Szczegóły w <a href="polityka-prywatnosci.html">Polityce prywatności</a>.
+                </div>
+                
+                <button type="submit" class="btn btn--primary form-submit">Wyślij zgłoszenie</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ============================================
          COOKIE BANNER
          ============================================ -->
     <div class="cookie-banner" id="cookieBanner">
@@ -2496,6 +2575,54 @@
                     question.setAttribute('aria-expanded', !isExpanded);
                     answer.classList.toggle('is-open');
                 });
+            });
+        })();
+        
+        /* ============================================
+           WYCENA MODAL
+           ============================================ */
+        (function() {
+            const wycenaModal = document.getElementById('wycenaModal');
+            const wycenaModalClose = document.getElementById('wycenaModalClose');
+            const wycenaPakietSelect = document.getElementById('wycena-pakiet');
+            const btnWycenaButtons = document.querySelectorAll('.btn-wycena');
+            
+            // Open modal when clicking "Wybierz pakiet" buttons
+            btnWycenaButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const pakiet = this.getAttribute('data-pakiet');
+                    
+                    // Set the package in the select dropdown
+                    if (pakiet && wycenaPakietSelect) {
+                        wycenaPakietSelect.value = pakiet;
+                    }
+                    
+                    // Open modal
+                    wycenaModal.classList.add('is-open');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            wycenaModalClose.addEventListener('click', function() {
+                wycenaModal.classList.remove('is-open');
+                document.body.style.overflow = '';
+            });
+            
+            // Close modal when clicking outside
+            wycenaModal.addEventListener('click', function(e) {
+                if (e.target === wycenaModal) {
+                    wycenaModal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && wycenaModal.classList.contains('is-open')) {
+                    wycenaModal.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                }
             });
         })();
         
