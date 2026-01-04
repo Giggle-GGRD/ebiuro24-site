@@ -1,0 +1,6 @@
+# Security Policy for ebiuro24.pl
+# EURO-TAX Biuro Rachunkowe
+
+Contact: mailto:eurotax@ebiuro24.pl
+Preferred-Languages: pl, en
+Canonical: https://ebiuro24.pl/.well-known/security.txt
