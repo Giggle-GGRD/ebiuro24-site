@@ -30,5 +30,5 @@ Crawl-delay: 2
 Sitemap: https://ebiuro24.pl/sitemap.xml
 
 # Host kanoniczny
-Host: https://ebiuro24.pl
+
 
