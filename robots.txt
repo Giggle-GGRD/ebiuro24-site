@@ -1,0 +1,9 @@
+# robots.txt for ebiuro24.pl
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ebiuro24.pl/sitemap.xml
+
+# Crawl-delay (optional, be gentle with server)
+Crawl-delay: 1
