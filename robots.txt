@@ -1,0 +1,33 @@
+# =====================================================
+# robots.txt dla ebiuro24.pl
+# EURO-TAX Biuro Rachunkowe Online
+# =====================================================
+
+# Zezwól wszystkim robotom na indeksowanie
+User-agent: *
+Allow: /
+
+# Blokuj dostęp do plików technicznych
+Disallow: /.git/
+Disallow: /*.json$
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex (dla ruchu z Europy Wschodniej)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Mapy witryny
+Sitemap: https://ebiuro24.pl/sitemap.xml
+
+# Host kanoniczny
+Host: https://ebiuro24.pl

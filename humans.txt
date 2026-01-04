@@ -1,0 +1,18 @@
+/* TEAM */
+Firma: EURO-TAX Biuro Rachunkowe
+Kontakt: eurotax@ebiuro24.pl
+Telefon: +48 733 710 426
+Lokalizacja: Polska
+
+/* SITE */
+Ostatnia aktualizacja: 2026-01-04
+Język: Polski
+Doctype: HTML5
+Narzędzia: Visual Studio Code, Git, GitHub Pages
+
+/* USŁUGI */
+- Księgowość online dla firm
+- Kadry i płace
+- Rozliczenia VAT, PIT, CIT
+- Księgowość e-commerce
+- Integracje: Allegro, Erli, BaseLinker
