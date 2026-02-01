@@ -307,10 +307,12 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
+            background: var(--color-gray-400);
         }
-        .result-card--ryczalt .result-card__badge { background: var(--color-ryczalt); }
-        .result-card--skala .result-card__badge { background: var(--color-skala); }
-        .result-card--liniowy .result-card__badge { background: var(--color-liniowy); }
+        /* Kolory kropek wg rankingu: zielona=najlepsza, pomarańczowa=średnia, czerwona=najgorsza */
+        .result-card.rank-1 .result-card__badge { background: #22c55e; }
+        .result-card.rank-2 .result-card__badge { background: #f97316; }
+        .result-card.rank-3 .result-card__badge { background: #ef4444; }
         
         .result-card__title {
             font-size: 1rem;
@@ -697,19 +699,19 @@
                             </div>
                             <div class="result-card__total">
                                 <div class="result-card__total-label">Całkowite obciążenie</div>
-                                <div class="result-card__total-value" id="ryczalt-total">–</div>
+                                <div class="result-card__total-value" id="ryczalt-total">0 zł</div>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek ryczałtowy</span>
-                                <span class="result-row__value" id="ryczalt-podatek">–</span>
+                                <span class="result-row__value" id="ryczalt-podatek">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">ZUS społeczny</span>
-                                <span class="result-row__value" id="ryczalt-zus">–</span>
+                                <span class="result-row__value" id="ryczalt-zus">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="ryczalt-zdrowotna">–</span>
+                                <span class="result-row__value" id="ryczalt-zdrowotna">0 zł</span>
                             </div>
                             <!-- Szczegóły składki zdrowotnej -->
                             <div class="result-details" id="ryczalt-zdrow-details">
@@ -719,19 +721,19 @@
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Podstawa (mies.):</span>
-                                    <span class="result-detail-value" id="ryczalt-zdrow-podstawa">–</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-podstawa">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Składka 9% (mies.):</span>
-                                    <span class="result-detail-value" id="ryczalt-zdrow-mies">–</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-mies">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Składka roczna:</span>
-                                    <span class="result-detail-value" id="ryczalt-zdrow-rok">–</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-rok">0 zł</span>
                                 </div>
                                 <div class="result-detail-row result-detail-row--green">
                                     <span class="result-detail-label">Odliczenie 50%:</span>
-                                    <span class="result-detail-value" id="ryczalt-zdrow-odliczenie">–</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-odliczenie">0 zł</span>
                                 </div>
                             </div>
                         </div>
@@ -751,29 +753,29 @@
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek dochodowy</span>
-                                <span class="result-row__value" id="skala-podatek">–</span>
+                                <span class="result-row__value" id="skala-podatek">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">ZUS społeczny <small>(koszt)</small></span>
-                                <span class="result-row__value" id="skala-zus">–</span>
+                                <span class="result-row__value" id="skala-zus">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="skala-zdrowotna">–</span>
+                                <span class="result-row__value" id="skala-zdrowotna">0 zł</span>
                             </div>
                             <!-- Szczegóły składki zdrowotnej -->
                             <div class="result-details" id="skala-zdrow-details">
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Dochód (przych.-koszty-ZUS):</span>
-                                    <span class="result-detail-value" id="skala-dochod">–</span>
+                                    <span class="result-detail-value" id="skala-dochod">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Składka 9% dochodu:</span>
-                                    <span class="result-detail-value" id="skala-zdrow-obliczona">–</span>
+                                    <span class="result-detail-value" id="skala-zdrow-obliczona">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Minimalna składka:</span>
-                                    <span class="result-detail-value" id="skala-zdrow-min">–</span>
+                                    <span class="result-detail-value" id="skala-zdrow-min">0 zł</span>
                                 </div>
                                 <div class="result-detail-row result-detail-row--red">
                                     <span class="result-detail-label">Odliczenie:</span>
@@ -793,41 +795,41 @@
                             </div>
                             <div class="result-card__total">
                                 <div class="result-card__total-label">Całkowite obciążenie</div>
-                                <div class="result-card__total-value" id="liniowy-total">–</div>
+                                <div class="result-card__total-value" id="liniowy-total">0 zł</div>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek dochodowy</span>
-                                <span class="result-row__value" id="liniowy-podatek">–</span>
+                                <span class="result-row__value" id="liniowy-podatek">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">ZUS społeczny <small>(koszt)</small></span>
-                                <span class="result-row__value" id="liniowy-zus">–</span>
+                                <span class="result-row__value" id="liniowy-zus">0 zł</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="liniowy-zdrowotna">–</span>
+                                <span class="result-row__value" id="liniowy-zdrowotna">0 zł</span>
                             </div>
                             <!-- Szczegóły składki zdrowotnej -->
                             <div class="result-details" id="liniowy-zdrow-details">
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Dochód (przych.-koszty-ZUS):</span>
-                                    <span class="result-detail-value" id="liniowy-dochod">–</span>
+                                    <span class="result-detail-value" id="liniowy-dochod">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Składka 4,9% dochodu:</span>
-                                    <span class="result-detail-value" id="liniowy-zdrow-obliczona">–</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-obliczona">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Minimalna składka:</span>
-                                    <span class="result-detail-value" id="liniowy-zdrow-min">–</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-min">0 zł</span>
                                 </div>
                                 <div class="result-detail-row result-detail-row--green">
                                     <span class="result-detail-label">Odliczenie od dochodu:</span>
-                                    <span class="result-detail-value" id="liniowy-zdrow-odliczenie">–</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-odliczenie">0 zł</span>
                                 </div>
                                 <div class="result-detail-row">
                                     <span class="result-detail-label">Limit odliczenia:</span>
-                                    <span class="result-detail-value" id="liniowy-zdrow-limit">–</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-limit">0 zł</span>
                                 </div>
                             </div>
                         </div>
@@ -1249,22 +1251,30 @@
             setResult('najem-12', najem.podatek12);
             setResult('najem-total', najem.total);
             
-            // Znajdź najkorzystniejszą formę
+            // Znajdź ranking form (1=najlepsza, 2=średnia, 3=najgorsza)
             const wyniki = [
                 { id: 'card-ryczalt', total: ryczalt.total },
                 { id: 'card-skala', total: skala.total },
                 { id: 'card-liniowy', total: liniowy.total }
             ];
             
-            // Usuń poprzednie oznaczenie
-            wyniki.forEach(w => document.getElementById(w.id).classList.remove('winner'));
+            // Sortuj od najniższego do najwyższego
+            const sorted = [...wyniki].sort((a, b) => a.total - b.total);
             
-            // Oznacz najkorzystniejszą
-            const min = Math.min(...wyniki.map(w => w.total));
-            const winner = wyniki.find(w => w.total === min);
-            if (winner && min > 0) {
-                document.getElementById(winner.id).classList.add('winner');
-            }
+            // Usuń poprzednie klasy
+            wyniki.forEach(w => {
+                const card = document.getElementById(w.id);
+                card.classList.remove('winner', 'rank-1', 'rank-2', 'rank-3');
+            });
+            
+            // Przypisz rankingi (kolory kropek)
+            sorted.forEach((w, index) => {
+                const card = document.getElementById(w.id);
+                card.classList.add('rank-' + (index + 1));
+                if (index === 0 && w.total > 0) {
+                    card.classList.add('winner');
+                }
+            });
         }
         
         // ============================================
