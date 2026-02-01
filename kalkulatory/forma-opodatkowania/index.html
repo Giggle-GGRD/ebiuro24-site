@@ -608,7 +608,7 @@
                     <div class="form-group">
                         <label for="przychod" class="form-label">Przychód z DG (PLN)</label>
                         <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="przychod" class="form-input" value="250000" min="0" step="1000">
+                            <input type="number" id="przychod" class="form-input" value="0" min="0" step="1000">
                         </div>
                         <p class="form-hint">Przychód roczny z działalności gospodarczej</p>
                     </div>
@@ -616,7 +616,7 @@
                     <div class="form-group">
                         <label for="koszty" class="form-label">Koszty uzyskania (PLN)</label>
                         <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="koszty" class="form-input" value="50000" min="0" step="1000">
+                            <input type="number" id="koszty" class="form-input" value="0" min="0" step="1000">
                         </div>
                         <p class="form-hint">Nie dotyczy ryczałtu</p>
                     </div>
@@ -624,7 +624,7 @@
                     <div class="form-group">
                         <label for="zus" class="form-label">ZUS społeczne (PLN/rok)</label>
                         <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="zus" class="form-input" value="19000" min="0" step="100">
+                            <input type="number" id="zus" class="form-input" value="0" min="0" step="100">
                         </div>
                         <p class="form-hint">Suma składek społecznych rocznie</p>
                     </div>
@@ -654,7 +654,7 @@
                             </div>
                             <div class="ryczalt-rate">
                                 <label>8,5%</label>
-                                <input type="number" id="r85" value="250000" min="0">
+                                <input type="number" id="r85" value="0" min="0">
                             </div>
                             <div class="ryczalt-rate">
                                 <label>10%</label>
@@ -1290,13 +1290,14 @@
             
             // Synchronizacja przychodu z sumą ryczałtu
             document.getElementById('przychod').addEventListener('change', function() {
-                // Jeśli zmieniono przychód, zaktualizuj domyślnie r85
+                // Jeśli zmieniono przychód, zaktualizuj domyślnie r85 (gdy suma ryczałtu = 0)
                 const nowyPrzychod = parseFloat(this.value) || 0;
                 const sumaObecna = ['r3','r55','r85','r10','r12','r14','r15','r17']
                     .reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
                 
-                if (sumaObecna === 0 || sumaObecna === 250000) {
+                if (sumaObecna === 0) {
                     document.getElementById('r85').value = nowyPrzychod;
+                    calculate();
                 }
             });
             
