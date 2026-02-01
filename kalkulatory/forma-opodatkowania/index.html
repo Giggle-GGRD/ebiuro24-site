@@ -6,6 +6,7 @@
     <title>Kalkulator wyboru formy opodatkowania 2026 | EURO-TAX</title>
     <meta name="description" content="Porównaj Ryczałt, Skalę podatkową i Podatek liniowy. Sprawdź, która forma opodatkowania jest dla Ciebie najkorzystniejsza. Kalkulator online.">
     
+    <!-- Open Graph -->
     <meta property="og:title" content="Kalkulator wyboru formy opodatkowania 2026 | EURO-TAX">
     <meta property="og:description" content="Porównaj Ryczałt, Skalę podatkową i Podatek liniowy. Sprawdź najkorzystniejszą formę opodatkowania.">
     <meta property="og:type" content="website">
@@ -13,9 +14,11 @@
     <meta property="og:image" content="https://ebiuro24.pl/img/logo-eurotax.jpg">
     <meta property="og:locale" content="pl_PL">
     
+    <!-- Canonical -->
     <link rel="canonical" href="https://ebiuro24.pl/kalkulatory/forma-opodatkowania/">
     <link rel="icon" type="image/jpeg" href="/img/logo-eurotax.jpg">
     
+    <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -24,121 +27,493 @@
       "url": "https://ebiuro24.pl/kalkulatory/forma-opodatkowania/",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PLN"},
-      "provider": {"@type": "AccountingService", "name": "EURO-TAX Biuro Rachunkowe", "url": "https://ebiuro24.pl/"}
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "PLN"
+      },
+      "provider": {
+        "@type": "AccountingService",
+        "name": "EURO-TAX Biuro Rachunkowe",
+        "url": "https://ebiuro24.pl/"
+      }
     }
     </script>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --color-bg: #F7FAF9; --color-text: #111827; --color-dark-green: #00301A;
-            --color-cta: #00B648; --color-border: #E5E7EB; --color-white: #FFFFFF;
-            --color-gray-50: #F9FAFB; --color-gray-100: #F3F4F6; --color-gray-600: #4B5563;
-            --color-winner: #dcfce7; --color-winner-border: #22c55e;
-            --color-ryczalt: #f97316; --color-skala: #3b82f6; --color-liniowy: #8b5cf6;
-            --font-heading: 'Montserrat', sans-serif; --font-body: 'Inter', sans-serif;
-            --max-width: 1200px; --radius: 8px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05); --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-        }
-        body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--color-text); background: var(--color-bg); }
-        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-dark-green); }
-        a { color: var(--color-cta); text-decoration: none; }
         
-        .nav { background: var(--color-white); padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
-        .nav__container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .nav__logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--color-dark-green); }
-        .nav__logo img { height: 40px; }
+        :root {
+            --color-bg: #F7FAF9;
+            --color-text: #111827;
+            --color-dark-green: #00301A;
+            --color-cta: #00B648;
+            --color-border: #E5E7EB;
+            --color-white: #FFFFFF;
+            --color-gray-50: #F9FAFB;
+            --color-gray-100: #F3F4F6;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --color-winner: #dcfce7;
+            --color-winner-border: #22c55e;
+            --color-ryczalt: #f97316;
+            --color-skala: #3b82f6;
+            --color-liniowy: #8b5cf6;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --radius: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-dark-green);
+        }
+        
+        a { color: var(--color-cta); text-decoration: none; }
+        a:hover { color: var(--color-dark-green); }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            background: var(--color-white);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav__container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav__logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-dark-green);
+        }
+        .nav__logo img { height: 40px; width: auto; }
         .nav__links { display: flex; gap: 32px; list-style: none; }
         .nav__link { color: var(--color-text); font-weight: 500; }
-        .nav__link:hover, .nav__link--active { color: var(--color-cta); }
+        .nav__link:hover { color: var(--color-cta); }
+        .nav__link--active { color: var(--color-cta); }
         
+        /* ============================================
+           LAYOUT
+           ============================================ */
         .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
         .section { padding: 60px 0; }
         .section__header { text-align: center; margin-bottom: 40px; }
         .section__subtitle { color: var(--color-gray-600); font-size: 1.125rem; }
         
-        .calc-wrapper { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
-        .calc-inputs { background: var(--color-white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-md); position: sticky; top: 90px; }
-        .calc-inputs h3 { font-size: 1.25rem; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--color-border); }
+        /* ============================================
+           CALCULATOR LAYOUT
+           ============================================ */
+        .calc-wrapper {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
         
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: var(--color-dark-green); }
-        .form-input, .form-select { width: 100%; padding: 12px 14px; border: 2px solid var(--color-border); border-radius: var(--radius); font-family: var(--font-body); font-size: 1rem; transition: border-color 0.2s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: var(--color-cta); }
-        .form-input[type="number"] { text-align: right; font-weight: 500; }
-        .form-hint { font-size: 0.8rem; color: var(--color-gray-600); margin-top: 6px; }
+        .calc-inputs {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 100px;
+        }
         
-        .input-suffix { position: relative; }
-        .input-suffix::after { content: attr(data-suffix); position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--color-gray-600); font-size: 0.9rem; pointer-events: none; }
+        .calc-inputs h3 {
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-border);
+        }
+        
+        .form-group { margin-bottom: 16px; }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 6px;
+            color: var(--color-dark-green);
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            transition: border-color 0.2s;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--color-cta);
+        }
+        
+        .form-input[type="number"] { text-align: right; }
+        
+        .form-hint {
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+            margin-top: 4px;
+        }
+        
+        .input-suffix {
+            position: relative;
+        }
+        .input-suffix::after {
+            content: attr(data-suffix);
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-600);
+            font-size: 0.875rem;
+            pointer-events: none;
+        }
         .input-suffix .form-input { padding-right: 50px; }
+
+        /* ============================================
+           RYCZALT RATES SECTION
+           ============================================ */
+        .ryczalt-section {
+            background: #fff7ed;
+            border: 2px solid var(--color-ryczalt);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-top: 20px;
+        }
         
-        .ryczalt-box { background: #fff7ed; border: 2px solid var(--color-ryczalt); border-radius: var(--radius); padding: 16px; margin-top: 8px; }
-        .ryczalt-box label { font-size: 0.85rem; color: var(--color-gray-600); display: block; margin-bottom: 6px; }
-        .ryczalt-box select { width: 100%; padding: 10px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 0.9rem; }
+        .ryczalt-section h4 {
+            font-size: 0.9375rem;
+            color: var(--color-ryczalt);
+            margin-bottom: 12px;
+        }
         
-        .btn-calculate { width: 100%; padding: 16px 24px; background: var(--color-cta); color: white; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; border: none; border-radius: var(--radius); cursor: pointer; margin-top: 24px; transition: background 0.2s, transform 0.1s; }
-        .btn-calculate:hover { background: #00a03e; }
-        .btn-calculate:active { transform: scale(0.98); }
+        .ryczalt-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
         
-        .calc-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .result-card { background: var(--color-white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-md); border: 3px solid transparent; transition: all 0.3s; }
-        .result-card.winner { border-color: var(--color-winner-border); background: var(--color-winner); }
-        .result-card.winner .result-card__header::after { content: "✓ NAJKORZYSTNIEJSZA"; display: block; background: var(--color-winner-border); color: white; font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-top: 8px; text-align: center; }
+        .ryczalt-rate {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         
-        .result-card__header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--color-border); flex-wrap: wrap; }
-        .result-card__badge { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+        .ryczalt-rate label {
+            font-size: 0.8125rem;
+            color: var(--color-gray-700);
+            white-space: nowrap;
+        }
+        
+        .ryczalt-rate input {
+            width: 80px;
+            padding: 6px 8px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 0.8125rem;
+            text-align: right;
+        }
+        
+        .ryczalt-rate input:focus {
+            outline: none;
+            border-color: var(--color-ryczalt);
+        }
+        
+        /* ============================================
+           RESULTS CARDS
+           ============================================ */
+        .calc-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .result-card {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .result-card.winner {
+            border-color: var(--color-winner-border);
+            background: var(--color-winner);
+        }
+        
+        .result-card.winner::before {
+            content: "NAJKORZYSTNIEJSZA";
+            display: block;
+            background: var(--color-winner-border);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: -24px -24px 16px -24px;
+        }
+        
+        .result-card__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--color-border);
+        }
+        
+        .result-card__badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
         .result-card--ryczalt .result-card__badge { background: var(--color-ryczalt); }
         .result-card--skala .result-card__badge { background: var(--color-skala); }
         .result-card--liniowy .result-card__badge { background: var(--color-liniowy); }
-        .result-card__title { font-size: 1.1rem; font-weight: 700; }
-        .result-card__subtitle { font-size: 0.75rem; color: var(--color-gray-600); }
         
-        .result-card__total { text-align: center; padding: 20px 0; margin-bottom: 16px; border-bottom: 1px dashed var(--color-border); }
-        .result-card__total-label { font-size: 0.85rem; color: var(--color-gray-600); margin-bottom: 6px; }
-        .result-card__total-value { font-size: 2rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-dark-green); }
+        .result-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+        }
         
-        .result-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.9rem; border-bottom: 1px solid var(--color-gray-100); }
+        .result-card__subtitle {
+            font-size: 0.75rem;
+            color: var(--color-gray-600);
+        }
+        
+        .result-card__total {
+            text-align: center;
+            padding: 16px 0;
+            margin-bottom: 16px;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        
+        .result-card__total-label {
+            font-size: 0.8125rem;
+            color: var(--color-gray-600);
+            margin-bottom: 4px;
+        }
+        
+        .result-card__total-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            color: var(--color-dark-green);
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        
         .result-row:last-child { border-bottom: none; }
+        
         .result-row__label { color: var(--color-gray-600); }
         .result-row__value { font-weight: 600; }
-        .result-row--highlight { background: var(--color-gray-50); margin: 8px -24px 0; padding: 12px 24px; border-radius: 0 0 var(--radius) var(--radius); }
         
-        .info-box { background: #eff6ff; border-left: 4px solid var(--color-skala); padding: 16px 20px; margin-top: 24px; border-radius: 0 var(--radius) var(--radius) 0; }
-        .info-box p { font-size: 0.9rem; color: #1e40af; margin: 0; }
-        
-        .cta-box { background: linear-gradient(135deg, var(--color-dark-green), #004d29); color: white; padding: 32px; border-radius: var(--radius); text-align: center; margin-top: 32px; }
-        .cta-box h3 { color: white; margin-bottom: 12px; }
-        .cta-box p { opacity: 0.9; margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 14px 32px; background: var(--color-cta); color: white; font-weight: 600; border-radius: var(--radius); }
-        .btn:hover { background: #00a03e; color: white; }
-        
-        .disclaimer { margin-top: 40px; padding: 24px; background: var(--color-gray-50); border-radius: var(--radius); font-size: 0.85rem; color: var(--color-gray-600); }
-        .disclaimer h4 { font-size: 1rem; margin-bottom: 12px; color: var(--color-dark-green); }
-        .disclaimer ul { margin: 12px 0; padding-left: 20px; }
-        .disclaimer li { margin-bottom: 6px; }
-        
-        .footer { background: var(--color-dark-green); color: #fff; padding: 40px 0 20px; margin-top: 60px; }
-        .footer__content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .footer a { color: rgba(255,255,255,0.8); }
-        .footer__copy { font-size: 0.875rem; opacity: 0.8; }
-        
-        @media (max-width: 1024px) {
-            .calc-wrapper { grid-template-columns: 1fr; }
-            .calc-inputs { position: static; }
-            .calc-results { grid-template-columns: 1fr; }
+        .result-row--highlight {
+            background: var(--color-gray-50);
+            margin: 0 -24px;
+            padding: 8px 24px;
         }
+
+        /* ============================================
+           NAJEM PRYWATNY SECTION
+           ============================================ */
+        .najem-section {
+            margin-top: 32px;
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .najem-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+        
+        .najem-note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            margin-bottom: 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .najem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            align-items: end;
+        }
+        
+        .najem-result {
+            background: var(--color-gray-50);
+            padding: 16px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        
+        .najem-result__label {
+            font-size: 0.8125rem;
+            color: var(--color-gray-600);
+            margin-bottom: 4px;
+        }
+        
+        .najem-result__value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-dark-green);
+        }
+        
+        /* ============================================
+           DISCLAIMER & FOOTER
+           ============================================ */
+        .disclaimer {
+            margin-top: 40px;
+            padding: 24px;
+            background: var(--color-gray-50);
+            border-radius: var(--radius);
+            font-size: 0.8125rem;
+            color: var(--color-gray-600);
+        }
+        
+        .disclaimer h4 {
+            font-size: 0.9375rem;
+            margin-bottom: 12px;
+        }
+        
+        .disclaimer ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+        
+        .disclaimer li { margin-bottom: 4px; }
+        
+        .footer {
+            background: var(--color-dark-green);
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer a { color: rgba(255,255,255,0.8); }
+        .footer a:hover { color: #fff; }
+        
+        .footer__copy {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .calc-inputs {
+                position: static;
+            }
+            .calc-results {
+                grid-template-columns: 1fr;
+            }
+            .najem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav__links { display: none; }
-            .result-card__total-value { font-size: 1.6rem; }
+            .ryczalt-grid { grid-template-columns: 1fr; }
+            .result-card__total-value { font-size: 1.5rem; }
         }
+        
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-box {
+            background: linear-gradient(135deg, var(--color-dark-green), #004d29);
+            color: white;
+            padding: 32px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 32px;
+        }
+        
+        .cta-box h3 { color: white; margin-bottom: 12px; }
+        .cta-box p { opacity: 0.9; margin-bottom: 20px; }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--color-cta);
+            color: white;
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #00a03e; color: white; }
     </style>
 </head>
 <body>
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
     <nav class="nav">
         <div class="nav__container">
             <a href="/" class="nav__logo">
@@ -156,95 +531,146 @@
         </div>
     </nav>
 
+    <!-- ============================================
+         CALCULATOR SECTION
+         ============================================ -->
     <section class="section">
         <div class="container">
             <div class="section__header">
-                <h1>Kalkulator wyboru formy opodatkowania 2026</h1>
-                <p class="section__subtitle">Porównaj: Ryczałt • Skala PIT 12%/32% • Liniowy 19%</p>
+                <h1>Kalkulator wyboru formy opodatkowania</h1>
+                <p class="section__subtitle">Porównaj: Ryczałt • Skala PIT • Liniowy 19%. Wpisz swoje przychody i koszty, a wskażemy najkorzystniejszą formę.</p>
             </div>
             
             <div class="calc-wrapper">
+                <!-- ============================================
+                     INPUTS PANEL
+                     ============================================ -->
                 <div class="calc-inputs">
-                    <h3>📊 Dane do obliczeń</h3>
+                    <h3>Dane wejściowe</h3>
                     
                     <div class="form-group">
-                        <label for="przychod" class="form-label">Roczny przychód z działalności</label>
-                        <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="przychod" class="form-input" value="250000" min="0" step="1000">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="koszty" class="form-label">Roczne koszty uzyskania przychodu</label>
-                        <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="koszty" class="form-input" value="50000" min="0" step="1000">
-                        </div>
-                        <p class="form-hint">Nie dotyczy ryczałtu (opodatkowanie od przychodu)</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="zus" class="form-label">Roczne składki ZUS społeczne</label>
-                        <div class="input-suffix" data-suffix="zł">
-                            <input type="number" id="zus" class="form-input" value="19000" min="0" step="100">
-                        </div>
-                        <p class="form-hint">Emerytalne + rentowe + chorobowe + wypadkowe + FP</p>
-                    </div>
-                    
-                    <div class="ryczalt-box">
-                        <label for="stawka-ryczalt">Stawka ryczałtu dla Twojej działalności:</label>
-                        <select id="stawka-ryczalt">
-                            <option value="0.03">3% – handel, gastronomia</option>
-                            <option value="0.055">5,5% – budownictwo, produkcja</option>
-                            <option value="0.085" selected>8,5% – usługi (większość)</option>
-                            <option value="0.10">10% – świadczenia zdrowotne</option>
-                            <option value="0.12">12% – IT, wynajem</option>
-                            <option value="0.14">14% – opieka zdrowotna</option>
-                            <option value="0.15">15% – pośrednictwo, reklama</option>
-                            <option value="0.17">17% – wolne zawody</option>
+                        <label for="rok" class="form-label">Rok podatkowy</label>
+                        <select id="rok" class="form-select">
+                            <option value="2026" selected>2026</option>
+                            <option value="2025">2025</option>
                         </select>
                     </div>
                     
-                    <button type="button" class="btn-calculate" onclick="oblicz()">
-                        🧮 OBLICZ I PORÓWNAJ
-                    </button>
+                    <div class="form-group">
+                        <label for="przychod" class="form-label">Przychód z DG (PLN)</label>
+                        <div class="input-suffix" data-suffix="zł">
+                            <input type="number" id="przychod" class="form-input" value="250000" min="0" step="1000">
+                        </div>
+                        <p class="form-hint">Przychód roczny z działalności gospodarczej</p>
+                    </div>
                     
-                    <div class="info-box">
-                        <p>💡 <strong>Wskazówka:</strong> Składka zdrowotna jest obliczana automatycznie wg przepisów 2026.</p>
+                    <div class="form-group">
+                        <label for="koszty" class="form-label">Koszty uzyskania (PLN)</label>
+                        <div class="input-suffix" data-suffix="zł">
+                            <input type="number" id="koszty" class="form-input" value="50000" min="0" step="1000">
+                        </div>
+                        <p class="form-hint">Nie dotyczy ryczałtu</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zus" class="form-label">ZUS społeczne (PLN/rok)</label>
+                        <div class="input-suffix" data-suffix="zł">
+                            <input type="number" id="zus" class="form-input" value="19000" min="0" step="100">
+                        </div>
+                        <p class="form-hint">Suma składek społecznych rocznie</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inne-dochody" class="form-label">Inne dochody (PLN/rok)</label>
+                        <div class="input-suffix" data-suffix="zł">
+                            <input type="number" id="inne-dochody" class="form-input" value="0" min="0" step="1000">
+                        </div>
+                        <p class="form-hint">Np. umowa o pracę, zlecenie, emerytura</p>
+                    </div>
+
+                    <!-- Ryczalt Rates Section -->
+                    <div class="ryczalt-section">
+                        <h4>Ryczałt – działalność gospodarcza</h4>
+                        <p style="font-size: 0.75rem; color: var(--color-gray-600); margin-bottom: 12px;">
+                            Podziel przychód wg stawek PKD (suma = Przychód z DG)
+                        </p>
+                        <div class="ryczalt-grid">
+                            <div class="ryczalt-rate">
+                                <label>3%</label>
+                                <input type="number" id="r3" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>5,5%</label>
+                                <input type="number" id="r55" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>8,5%</label>
+                                <input type="number" id="r85" value="250000" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>10%</label>
+                                <input type="number" id="r10" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>12%</label>
+                                <input type="number" id="r12" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>14%</label>
+                                <input type="number" id="r14" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>15%</label>
+                                <input type="number" id="r15" value="0" min="0">
+                            </div>
+                            <div class="ryczalt-rate">
+                                <label>17%</label>
+                                <input type="number" id="r17" value="0" min="0">
+                            </div>
+                        </div>
+                        <p id="ryczalt-sum" style="font-size: 0.75rem; margin-top: 12px; font-weight: 600; color: var(--color-ryczalt);">
+                            Suma: 250 000 zł
+                        </p>
                     </div>
                 </div>
                 
+                <!-- ============================================
+                     RESULTS PANEL
+                     ============================================ -->
                 <div>
                     <div class="calc-results">
+                        <!-- RYCZAŁT CARD -->
                         <div class="result-card result-card--ryczalt" id="card-ryczalt">
                             <div class="result-card__header">
                                 <span class="result-card__badge"></span>
                                 <div>
                                     <div class="result-card__title">Ryczałt</div>
-                                    <div class="result-card__subtitle">Od przychodu</div>
+                                    <div class="result-card__subtitle">Ryczałt ewidencjonowany</div>
                                 </div>
                             </div>
                             <div class="result-card__total">
-                                <div class="result-card__total-label">Suma rocznych obciążeń</div>
-                                <div class="result-card__total-value" id="ryczalt-total">—</div>
+                                <div class="result-card__total-label">Całkowite obciążenie</div>
+                                <div class="result-card__total-value" id="ryczalt-total">–</div>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek ryczałtowy</span>
-                                <span class="result-row__value" id="ryczalt-podatek">—</span>
+                                <span class="result-row__value" id="ryczalt-podatek">–</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="ryczalt-zdrowotna">—</span>
+                                <span class="result-row__value" id="ryczalt-zdrowotna">–</span>
                             </div>
                             <div class="result-row">
-                                <span class="result-row__label">ZUS społeczne</span>
-                                <span class="result-row__value" id="ryczalt-zus">—</span>
+                                <span class="result-row__label">ZUS społeczny</span>
+                                <span class="result-row__value" id="ryczalt-zus">–</span>
                             </div>
                             <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Zostaje na rękę</span>
-                                <span class="result-row__value" id="ryczalt-nareke">—</span>
+                                <span class="result-row__label">Roczna składka zdrow.</span>
+                                <span class="result-row__value" id="ryczalt-zdrow-rok">–</span>
                             </div>
                         </div>
 
+                        <!-- SKALA PIT CARD -->
                         <div class="result-card result-card--skala" id="card-skala">
                             <div class="result-card__header">
                                 <span class="result-card__badge"></span>
@@ -254,27 +680,28 @@
                                 </div>
                             </div>
                             <div class="result-card__total">
-                                <div class="result-card__total-label">Suma rocznych obciążeń</div>
-                                <div class="result-card__total-value" id="skala-total">—</div>
+                                <div class="result-card__total-label">Całkowite obciążenie</div>
+                                <div class="result-card__total-value" id="skala-total">–</div>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek dochodowy</span>
-                                <span class="result-row__value" id="skala-podatek">—</span>
+                                <span class="result-row__value" id="skala-podatek">–</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="skala-zdrowotna">—</span>
+                                <span class="result-row__value" id="skala-zdrowotna">–</span>
                             </div>
                             <div class="result-row">
-                                <span class="result-row__label">ZUS społeczne</span>
-                                <span class="result-row__value" id="skala-zus">—</span>
+                                <span class="result-row__label">ZUS społeczny</span>
+                                <span class="result-row__value" id="skala-zus">–</span>
                             </div>
                             <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Zostaje na rękę</span>
-                                <span class="result-row__value" id="skala-nareke">—</span>
+                                <span class="result-row__label">Dochód do opodatkowania</span>
+                                <span class="result-row__value" id="skala-dochod">–</span>
                             </div>
                         </div>
                         
+                        <!-- LINIOWY CARD -->
                         <div class="result-card result-card--liniowy" id="card-liniowy">
                             <div class="result-card__header">
                                 <span class="result-card__badge"></span>
@@ -284,199 +711,441 @@
                                 </div>
                             </div>
                             <div class="result-card__total">
-                                <div class="result-card__total-label">Suma rocznych obciążeń</div>
-                                <div class="result-card__total-value" id="liniowy-total">—</div>
+                                <div class="result-card__total-label">Całkowite obciążenie</div>
+                                <div class="result-card__total-value" id="liniowy-total">–</div>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Podatek dochodowy</span>
-                                <span class="result-row__value" id="liniowy-podatek">—</span>
+                                <span class="result-row__value" id="liniowy-podatek">–</span>
                             </div>
                             <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="liniowy-zdrowotna">—</span>
+                                <span class="result-row__value" id="liniowy-zdrowotna">–</span>
                             </div>
                             <div class="result-row">
-                                <span class="result-row__label">ZUS społeczne</span>
-                                <span class="result-row__value" id="liniowy-zus">—</span>
+                                <span class="result-row__label">ZUS społeczny</span>
+                                <span class="result-row__value" id="liniowy-zus">–</span>
                             </div>
                             <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Zostaje na rękę</span>
-                                <span class="result-row__value" id="liniowy-nareke">—</span>
+                                <span class="result-row__label">Dochód do opodatkowania</span>
+                                <span class="result-row__value" id="liniowy-dochod">–</span>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- ============================================
+                         NAJEM PRYWATNY SECTION
+                         ============================================ -->
+                    <div class="najem-section">
+                        <h3>Najem prywatny – podatek ryczałtowy (nie podlega wyborowi formy)</h3>
+                        <div class="najem-note">
+                            Przychody z najmu prywatnego opodatkowane są wyłącznie ryczałtem (8,5% do 100 000 zł i 12% powyżej). 
+                            Nie łączą się z przychodami z działalności i nie podlegają skali ani podatkowi liniowemu.
+                        </div>
+                        <div class="najem-grid">
+                            <div class="form-group">
+                                <label for="najem-przychod" class="form-label">Przychód z najmu (PLN/rok)</label>
+                                <input type="number" id="najem-przychod" class="form-input" value="0" min="0" step="1000">
+                            </div>
+                            <div class="najem-result">
+                                <div class="najem-result__label">Część opodatk. 8,5%</div>
+                                <div class="najem-result__value" id="najem-85">0 zł</div>
+                            </div>
+                            <div class="najem-result">
+                                <div class="najem-result__label">Część opodatk. 12%</div>
+                                <div class="najem-result__value" id="najem-12">0 zł</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 16px; display: flex; justify-content: space-between; padding: 16px; background: var(--color-gray-100); border-radius: var(--radius);">
+                            <span style="font-weight: 600;">Ryczałt z najmu razem:</span>
+                            <span style="font-weight: 700; color: var(--color-dark-green);" id="najem-total">0 zł</span>
+                        </div>
+                    </div>
 
+                    <!-- ============================================
+                         CTA BOX
+                         ============================================ -->
                     <div class="cta-box">
                         <h3>Potrzebujesz pomocy w wyborze formy opodatkowania?</h3>
-                        <p>Skontaktuj się z nami – przeanalizujemy Twoją sytuację i doradzimy najlepsze rozwiązanie.</p>
-                        <a href="/kontakt/" class="btn">Umów bezpłatną konsultację</a>
+                        <p>Skontaktuj się z nami – doradzimy najkorzystniejsze rozwiązanie dla Twojej działalności.</p>
+                        <a href="/kontakt/" class="btn">Umów konsultację</a>
                     </div>
                     
+                    <!-- ============================================
+                         DISCLAIMER
+                         ============================================ -->
                     <div class="disclaimer">
-                        <h4>⚖️ Podstawa prawna i zasady obliczeń</h4>
-                        <p><strong>Ryczałt ewidencjonowany:</strong></p>
+                        <h4>Zasada działania kalkulatora (podstawa prawna)</h4>
+                        <p>Kalkulator działa zgodnie z:</p>
                         <ul>
-                            <li>Podatek od przychodu (bez odliczania kosztów)</li>
-                            <li>Składka zdrowotna ryczałtowa: 461,66 zł/mies (do 60k), 769,43 zł/mies (60k-300k), 1384,97 zł/mies (powyżej 300k)</li>
-                            <li>Odliczenie 50% składki zdrowotnej od przychodu</li>
+                            <li>ustawą z dnia 20 listopada 1998 r. o zryczałtowanym podatku dochodowym od niektórych przychodów osiąganych przez osoby fizyczne (Dz.U. z późn. zm.)</li>
+                            <li>ustawą z dnia 26 lipca 1991 r. o podatku dochodowym od osób fizycznych (PIT)</li>
+                            <li>ustawą z dnia 27 sierpnia 2004 r. o świadczeniach opieki zdrowotnej finansowanych ze środków publicznych</li>
                         </ul>
-                        <p style="margin-top: 12px;"><strong>Skala podatkowa (PIT):</strong></p>
+                        
+                        <h4 style="margin-top: 16px;">Ryczałt ewidencjonowany – mechanizm obliczeń</h4>
+                        <p>Zgodnie z art. 12 ustawy o ryczałcie:</p>
                         <ul>
-                            <li>12% do 120 000 zł dochodu, 32% powyżej</li>
-                            <li>Kwota wolna: 30 000 zł (zmniejsza podatek o 3 600 zł)</li>
-                            <li>Składka zdrowotna: 9% dochodu (nieodliczalna)</li>
+                            <li>Podatnik przypisuje przychód z działalności gospodarczej do właściwych stawek ryczałtu (3%, 5,5%, 8,5%, 10%, 12%, 14%, 15%, 17%) – w zależności od rodzaju wykonywanej działalności.</li>
+                            <li>Każda część przychodu jest opodatkowana odpowiadającą jej stawką ryczałtu, bez pomniejszania o koszty uzyskania przychodu (art. 6 ust. 1 ustawy o ryczałcie).</li>
+                            <li>Podatek ryczałtowy stanowi sumę podatku obliczonego od poszczególnych części przychodu.</li>
                         </ul>
-                        <p style="margin-top: 12px;"><strong>Podatek liniowy:</strong></p>
-                        <ul>
-                            <li>Stała stawka 19% od dochodu</li>
-                            <li>Składka zdrowotna: 4,9% dochodu</li>
-                            <li>Odliczenie składki zdrowotnej: max 12 900 zł/rok</li>
-                        </ul>
-                        <p style="margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 6px; color: #92400e;">
-                            ⚠️ <strong>Uwaga:</strong> Wyniki mają charakter poglądowy. W indywidualnych przypadkach zalecamy konsultację z doradcą podatkowym.
+                        
+                        <h4 style="margin-top: 16px;">Składka zdrowotna</h4>
+                        <p>Składka zdrowotna obliczana jest zgodnie z art. 79–82 ustawy o świadczeniach opieki zdrowotnej, odrębnie dla ryczałtu, skali podatkowej i podatku liniowego, z uwzględnieniem składki minimalnej i zasad odliczeń.</p>
+                        
+                        <p style="margin-top: 16px; font-weight: 600; color: var(--color-ryczalt);">
+                            ⚠️ Wyniki mają charakter orientacyjny i nie stanowią porady podatkowej. W indywidualnych przypadkach zalecamy konsultację z doradcą podatkowym.
                         </p>
+                        <p style="font-size: 0.75rem; margin-top: 8px;">Dane aktualizowane: styczeń 2026</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer class="footer">
         <div class="container">
             <div class="footer__content">
-                <div class="footer__copy">© 2026 EURO-TAX Biuro Rachunkowe</div>
+                <div class="footer__copy">
+                    © 2026 EURO-TAX Biuro Rachunkowe. Wszelkie prawa zastrzeżone.
+                </div>
                 <div>
                     <a href="/polityka-prywatnosci.html">Polityka prywatności</a> · 
+                    <a href="/polityka-cookies.html">Cookies</a> · 
                     <a href="/kontakt/">Kontakt</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ============================================
+         JAVASCRIPT - CALCULATOR LOGIC
+         ============================================ -->
     <script>
-    function formatPLN(value) {
-        return new Intl.NumberFormat('pl-PL').format(Math.round(value)) + ' zł';
-    }
-    
-    function oblicz() {
-        // Pobierz dane
-        const przychod = parseFloat(document.getElementById('przychod').value) || 0;
-        const koszty = parseFloat(document.getElementById('koszty').value) || 0;
-        const zus = parseFloat(document.getElementById('zus').value) || 0;
-        const stawkaRyczalt = parseFloat(document.getElementById('stawka-ryczalt').value);
+    (function() {
+        'use strict';
         
-        // =====================
-        // RYCZAŁT
-        // =====================
-        // Składka zdrowotna ryczałt (zależy od przychodu rocznego)
-        let zdrowRyczaltMies;
-        if (przychod <= 60000) {
-            zdrowRyczaltMies = 461.66;
-        } else if (przychod <= 300000) {
-            zdrowRyczaltMies = 769.43;
-        } else {
-            zdrowRyczaltMies = 1384.97;
+        // ============================================
+        // CONSTANTS 2026
+        // ============================================
+        const PARAMS_2026 = {
+            // Progi i stawki PIT
+            progPodatkowy: 120000,          // Próg 12%/32%
+            kwotaWolna: 30000,              // Kwota wolna od podatku
+            stawka12: 0.12,
+            stawka32: 0.32,
+            stawkaLiniowa: 0.19,
+            
+            // Składka zdrowotna - ryczałt (progi przychodu rocznego)
+            zdrowRyczaltProgi: [60000, 300000],  // do 60k, 60k-300k, powyżej 300k
+            zdrowRyczaltKwoty: [461.66, 769.43, 1384.97],  // miesięczne
+            
+            // Składka zdrowotna - skala i liniowy
+            zdrowSkalaStawka: 0.09,         // 9% dochodu
+            zdrowLiniowaStawka: 0.049,      // 4.9% dochodu
+            zdrowMinimalna: 314.96,         // minimalna miesięczna (2026 szacunek)
+            zdrowLiniowaMax: 12900,         // roczny limit odliczenia (liniowy)
+            zdrowRyczaltOdliczenie: 0.5,    // 50% można odliczyć od przychodu
+            
+            // Najem prywatny
+            najemProg: 100000,              // Próg 8.5%/12%
+            najemStawka1: 0.085,
+            najemStawka2: 0.12
+        };
+        
+        const PARAMS_2025 = {
+            progPodatkowy: 120000,
+            kwotaWolna: 30000,
+            stawka12: 0.12,
+            stawka32: 0.32,
+            stawkaLiniowa: 0.19,
+            zdrowRyczaltProgi: [60000, 300000],
+            zdrowRyczaltKwoty: [419.46, 699.11, 1258.39],
+            zdrowSkalaStawka: 0.09,
+            zdrowLiniowaStawka: 0.049,
+            zdrowMinimalna: 314.10,
+            zdrowLiniowaMax: 11600,
+            zdrowRyczaltOdliczenie: 0.5,
+            najemProg: 100000,
+            najemStawka1: 0.085,
+            najemStawka2: 0.12
+        };
+        
+        // ============================================
+        // HELPER FUNCTIONS
+        // ============================================
+        function formatPLN(value) {
+            return new Intl.NumberFormat('pl-PL', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(Math.round(value)) + ' zł';
         }
-        const zdrowRyczaltRok = zdrowRyczaltMies * 12;
         
-        // Odliczenie 50% składki zdrowotnej od przychodu
-        const odliczenieZdrowRyczalt = zdrowRyczaltRok * 0.5;
-        const podstawaRyczalt = Math.max(0, przychod - odliczenieZdrowRyczalt);
-        
-        // Podatek ryczałtowy
-        const podatekRyczalt = Math.round(podstawaRyczalt * stawkaRyczalt);
-        
-        // Suma obciążeń ryczałt
-        const totalRyczalt = podatekRyczalt + Math.round(zdrowRyczaltRok) + zus;
-        const naRekeRyczalt = przychod - koszty - totalRyczalt;
-        
-        // =====================
-        // SKALA PODATKOWA
-        // =====================
-        // Dochód = przychód - koszty - ZUS społeczne
-        const dochodSkala = Math.max(0, przychod - koszty - zus);
-        
-        // Składka zdrowotna 9% dochodu (min. 314.96 * 12)
-        let zdrowSkalaRok = dochodSkala * 0.09;
-        zdrowSkalaRok = Math.max(zdrowSkalaRok, 314.96 * 12);
-        zdrowSkalaRok = Math.round(zdrowSkalaRok);
-        
-        // Podatek wg skali
-        // Kwota zmniejszająca = 30000 * 12% = 3600 zł
-        let podatekSkala;
-        if (dochodSkala <= 120000) {
-            podatekSkala = dochodSkala * 0.12 - 3600;
-        } else {
-            podatekSkala = 120000 * 0.12 + (dochodSkala - 120000) * 0.32 - 3600;
+        function getParams(rok) {
+            return rok === '2025' ? PARAMS_2025 : PARAMS_2026;
         }
-        podatekSkala = Math.max(0, Math.round(podatekSkala));
         
-        // Suma obciążeń skala
-        const totalSkala = podatekSkala + zdrowSkalaRok + zus;
-        const naRekeSkala = przychod - koszty - totalSkala;
-        
-        // =====================
-        // PODATEK LINIOWY
-        // =====================
-        // Dochód = przychód - koszty - ZUS społeczne
-        const dochodLiniowy = Math.max(0, przychod - koszty - zus);
-        
-        // Składka zdrowotna 4.9% dochodu (min. 314.96 * 12)
-        let zdrowLiniowyRok = dochodLiniowy * 0.049;
-        zdrowLiniowyRok = Math.max(zdrowLiniowyRok, 314.96 * 12);
-        zdrowLiniowyRok = Math.round(zdrowLiniowyRok);
-        
-        // Odliczenie składki zdrowotnej (max 12 900 zł/rok)
-        const odliczenieZdrowLiniowy = Math.min(zdrowLiniowyRok, 12900);
-        const podstawaLiniowy = Math.max(0, dochodLiniowy - odliczenieZdrowLiniowy);
-        
-        // Podatek 19%
-        const podatekLiniowy = Math.round(podstawaLiniowy * 0.19);
-        
-        // Suma obciążeń liniowy
-        const totalLiniowy = podatekLiniowy + zdrowLiniowyRok + zus;
-        const naRekeLiniowy = przychod - koszty - totalLiniowy;
-        
-        // =====================
-        // WYŚWIETL WYNIKI
-        // =====================
-        document.getElementById('ryczalt-podatek').textContent = formatPLN(podatekRyczalt);
-        document.getElementById('ryczalt-zdrowotna').textContent = formatPLN(zdrowRyczaltRok);
-        document.getElementById('ryczalt-zus').textContent = formatPLN(zus);
-        document.getElementById('ryczalt-total').textContent = formatPLN(totalRyczalt);
-        document.getElementById('ryczalt-nareke').textContent = formatPLN(naRekeRyczalt);
-        
-        document.getElementById('skala-podatek').textContent = formatPLN(podatekSkala);
-        document.getElementById('skala-zdrowotna').textContent = formatPLN(zdrowSkalaRok);
-        document.getElementById('skala-zus').textContent = formatPLN(zus);
-        document.getElementById('skala-total').textContent = formatPLN(totalSkala);
-        document.getElementById('skala-nareke').textContent = formatPLN(naRekeSkala);
-        
-        document.getElementById('liniowy-podatek').textContent = formatPLN(podatekLiniowy);
-        document.getElementById('liniowy-zdrowotna').textContent = formatPLN(zdrowLiniowyRok);
-        document.getElementById('liniowy-zus').textContent = formatPLN(zus);
-        document.getElementById('liniowy-total').textContent = formatPLN(totalLiniowy);
-        document.getElementById('liniowy-nareke').textContent = formatPLN(naRekeLiniowy);
-        
-        // =====================
-        // OZNACZ NAJKORZYSTNIEJSZĄ
-        // =====================
-        document.getElementById('card-ryczalt').classList.remove('winner');
-        document.getElementById('card-skala').classList.remove('winner');
-        document.getElementById('card-liniowy').classList.remove('winner');
-        
-        const min = Math.min(totalRyczalt, totalSkala, totalLiniowy);
-        if (min === totalRyczalt) {
-            document.getElementById('card-ryczalt').classList.add('winner');
-        } else if (min === totalSkala) {
-            document.getElementById('card-skala').classList.add('winner');
-        } else {
-            document.getElementById('card-liniowy').classList.add('winner');
+        function getInputValue(id) {
+            const el = document.getElementById(id);
+            return el ? parseFloat(el.value) || 0 : 0;
         }
-    }
-    
-    // Oblicz przy załadowaniu strony
-    document.addEventListener('DOMContentLoaded', oblicz);
+        
+        function setResult(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = formatPLN(value);
+        }
+        
+        // ============================================
+        // RYCZALT CALCULATIONS
+        // ============================================
+        function obliczRyczalt(params, przychodyWgStawek, zusSpoleczne) {
+            // Suma przychodów
+            const przychod = Object.values(przychodyWgStawek).reduce((a, b) => a + b, 0);
+            
+            // Składka zdrowotna ryczałt (zależna od przychodu)
+            let zdrowMiesiecznie;
+            if (przychod <= params.zdrowRyczaltProgi[0]) {
+                zdrowMiesiecznie = params.zdrowRyczaltKwoty[0];
+            } else if (przychod <= params.zdrowRyczaltProgi[1]) {
+                zdrowMiesiecznie = params.zdrowRyczaltKwoty[1];
+            } else {
+                zdrowMiesiecznie = params.zdrowRyczaltKwoty[2];
+            }
+            const zdrowRocznie = zdrowMiesiecznie * 12;
+            
+            // Odliczenie 50% składki zdrowotnej od przychodu
+            const odliczenieZdrow = zdrowRocznie * params.zdrowRyczaltOdliczenie;
+            
+            // Podatek ryczałtowy - od przychodu pomniejszonego o odliczenie
+            // Proporcjonalnie pomniejszamy każdą stawkę
+            const wspolczynnik = przychod > 0 ? (przychod - odliczenieZdrow) / przychod : 1;
+            
+            let podatek = 0;
+            const stawki = {
+                'r3': 0.03, 'r55': 0.055, 'r85': 0.085, 'r10': 0.10,
+                'r12': 0.12, 'r14': 0.14, 'r15': 0.15, 'r17': 0.17
+            };
+            
+            for (const [key, stawka] of Object.entries(stawki)) {
+                const kwota = przychodyWgStawek[key] || 0;
+                podatek += kwota * wspolczynnik * stawka;
+            }
+            podatek = Math.max(0, Math.round(podatek));
+            
+            return {
+                podatek: podatek,
+                zdrowotna: Math.round(zdrowRocznie),
+                zus: Math.round(zusSpoleczne),
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+            };
+        }
+
+        // ============================================
+        // SKALA PODATKOWA CALCULATIONS
+        // ============================================
+        function obliczSkala(params, przychod, koszty, zusSpoleczne, inneDochody) {
+            // Dochód z DG
+            const dochodDG = Math.max(0, przychod - koszty - zusSpoleczne);
+            
+            // Dochód łączny (z innymi dochodami)
+            const dochodLaczny = dochodDG + inneDochody;
+            
+            // Składka zdrowotna 9% dochodu z DG (bez innych dochodów)
+            const zdrowPodstawa = Math.max(0, przychod - koszty - zusSpoleczne);
+            let zdrowRocznie = zdrowPodstawa * params.zdrowSkalaStawka;
+            zdrowRocznie = Math.max(zdrowRocznie, params.zdrowMinimalna * 12);
+            
+            // Podatek wg skali (z uwzględnieniem kwoty wolnej)
+            // Kwota zmniejszająca podatek = 12% * 30000 = 3600 zł
+            const kwotaZmniejszajaca = params.kwotaWolna * params.stawka12;
+            
+            let podatek;
+            if (dochodLaczny <= params.progPodatkowy) {
+                // Tylko stawka 12%
+                podatek = dochodLaczny * params.stawka12 - kwotaZmniejszajaca;
+            } else {
+                // 12% do progu + 32% powyżej
+                const czesc12 = params.progPodatkowy * params.stawka12;
+                const czesc32 = (dochodLaczny - params.progPodatkowy) * params.stawka32;
+                podatek = czesc12 + czesc32 - kwotaZmniejszajaca;
+            }
+            podatek = Math.max(0, Math.round(podatek));
+            
+            // Część podatku od innych dochodów (proporcjonalnie)
+            // Dla uproszczenia: pokazujemy całość, ale zaznaczamy dochód z DG
+            
+            return {
+                podatek: podatek,
+                zdrowotna: Math.round(zdrowRocznie),
+                zus: Math.round(zusSpoleczne),
+                dochod: Math.round(dochodLaczny),
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+            };
+        }
+        
+        // ============================================
+        // PODATEK LINIOWY CALCULATIONS
+        // ============================================
+        function obliczLiniowy(params, przychod, koszty, zusSpoleczne) {
+            // Dochód z DG
+            const dochodDG = Math.max(0, przychod - koszty - zusSpoleczne);
+            
+            // Składka zdrowotna 4.9% dochodu
+            let zdrowRocznie = dochodDG * params.zdrowLiniowaStawka;
+            zdrowRocznie = Math.max(zdrowRocznie, params.zdrowMinimalna * 12);
+            
+            // Odliczenie składki zdrowotnej od dochodu (max limit)
+            const odliczenieZdrow = Math.min(zdrowRocznie, params.zdrowLiniowaMax);
+            const dochodPoOdliczeniu = Math.max(0, dochodDG - odliczenieZdrow);
+            
+            // Podatek 19%
+            const podatek = Math.round(dochodPoOdliczeniu * params.stawkaLiniowa);
+            
+            return {
+                podatek: podatek,
+                zdrowotna: Math.round(zdrowRocznie),
+                zus: Math.round(zusSpoleczne),
+                dochod: Math.round(dochodDG),
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+            };
+        }
+        
+        // ============================================
+        // NAJEM PRYWATNY CALCULATIONS
+        // ============================================
+        function obliczNajem(params, przychod) {
+            if (przychod <= 0) {
+                return { podatek85: 0, podatek12: 0, total: 0 };
+            }
+            
+            let podatek85, podatek12;
+            
+            if (przychod <= params.najemProg) {
+                podatek85 = przychod * params.najemStawka1;
+                podatek12 = 0;
+            } else {
+                podatek85 = params.najemProg * params.najemStawka1;
+                podatek12 = (przychod - params.najemProg) * params.najemStawka2;
+            }
+            
+            return {
+                podatek85: Math.round(podatek85),
+                podatek12: Math.round(podatek12),
+                total: Math.round(podatek85 + podatek12)
+            };
+        }
+
+        // ============================================
+        // MAIN CALCULATE FUNCTION
+        // ============================================
+        function calculate() {
+            const rok = document.getElementById('rok').value;
+            const params = getParams(rok);
+            
+            // Pobierz wartości
+            const przychod = getInputValue('przychod');
+            const koszty = getInputValue('koszty');
+            const zus = getInputValue('zus');
+            const inneDochody = getInputValue('inne-dochody');
+            const najemPrzychod = getInputValue('najem-przychod');
+            
+            // Przychody wg stawek ryczałtu
+            const przychodyRyczalt = {
+                r3: getInputValue('r3'),
+                r55: getInputValue('r55'),
+                r85: getInputValue('r85'),
+                r10: getInputValue('r10'),
+                r12: getInputValue('r12'),
+                r14: getInputValue('r14'),
+                r15: getInputValue('r15'),
+                r17: getInputValue('r17')
+            };
+            
+            // Aktualizuj sumę ryczałtu
+            const sumaRyczalt = Object.values(przychodyRyczalt).reduce((a, b) => a + b, 0);
+            document.getElementById('ryczalt-sum').textContent = 'Suma: ' + formatPLN(sumaRyczalt);
+            
+            // Oblicz wszystkie formy
+            const ryczalt = obliczRyczalt(params, przychodyRyczalt, zus);
+            const skala = obliczSkala(params, przychod, koszty, zus, inneDochody);
+            const liniowy = obliczLiniowy(params, przychod, koszty, zus);
+            const najem = obliczNajem(params, najemPrzychod);
+            
+            // Wyświetl wyniki - Ryczałt
+            setResult('ryczalt-total', ryczalt.total);
+            setResult('ryczalt-podatek', ryczalt.podatek);
+            setResult('ryczalt-zdrowotna', ryczalt.zdrowotna);
+            setResult('ryczalt-zus', ryczalt.zus);
+            setResult('ryczalt-zdrow-rok', ryczalt.zdrowotna);
+            
+            // Wyświetl wyniki - Skala
+            setResult('skala-total', skala.total);
+            setResult('skala-podatek', skala.podatek);
+            setResult('skala-zdrowotna', skala.zdrowotna);
+            setResult('skala-zus', skala.zus);
+            setResult('skala-dochod', skala.dochod);
+            
+            // Wyświetl wyniki - Liniowy
+            setResult('liniowy-total', liniowy.total);
+            setResult('liniowy-podatek', liniowy.podatek);
+            setResult('liniowy-zdrowotna', liniowy.zdrowotna);
+            setResult('liniowy-zus', liniowy.zus);
+            setResult('liniowy-dochod', liniowy.dochod);
+            
+            // Wyświetl wyniki - Najem
+            setResult('najem-85', najem.podatek85);
+            setResult('najem-12', najem.podatek12);
+            setResult('najem-total', najem.total);
+            
+            // Znajdź najkorzystniejszą formę
+            const wyniki = [
+                { id: 'card-ryczalt', total: ryczalt.total },
+                { id: 'card-skala', total: skala.total },
+                { id: 'card-liniowy', total: liniowy.total }
+            ];
+            
+            // Usuń poprzednie oznaczenie
+            wyniki.forEach(w => document.getElementById(w.id).classList.remove('winner'));
+            
+            // Oznacz najkorzystniejszą
+            const min = Math.min(...wyniki.map(w => w.total));
+            const winner = wyniki.find(w => w.total === min);
+            if (winner && min > 0) {
+                document.getElementById(winner.id).classList.add('winner');
+            }
+        }
+        
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wszystkie inputy
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', calculate);
+                input.addEventListener('change', calculate);
+            });
+            
+            // Synchronizacja przychodu z sumą ryczałtu
+            document.getElementById('przychod').addEventListener('change', function() {
+                // Jeśli zmieniono przychód, zaktualizuj domyślnie r85
+                const nowyPrzychod = parseFloat(this.value) || 0;
+                const sumaObecna = ['r3','r55','r85','r10','r12','r14','r15','r17']
+                    .reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
+                
+                if (sumaObecna === 0 || sumaObecna === 250000) {
+                    document.getElementById('r85').value = nowyPrzychod;
+                }
+            });
+            
+            // Uruchom obliczenia na starcie
+            calculate();
+        });
+    })();
     </script>
 </body>
 </html>
