@@ -360,6 +360,53 @@
             margin: 0 -24px;
             padding: 8px 24px;
         }
+        
+        /* ============================================
+           HEALTH INSURANCE DETAILS
+           ============================================ */
+        .result-details {
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--color-gray-50);
+            border-radius: 6px;
+            border-left: 3px solid var(--color-gray-300);
+        }
+        
+        .result-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.75rem;
+        }
+        
+        .result-detail-label {
+            color: var(--color-gray-600);
+        }
+        
+        .result-detail-value {
+            font-weight: 600;
+            color: var(--color-gray-800);
+        }
+        
+        .result-detail-row--green .result-detail-value {
+            color: #059669;
+        }
+        
+        .result-detail-row--red .result-detail-value {
+            color: #dc2626;
+        }
+        
+        .result-card--ryczalt .result-details {
+            border-left-color: var(--color-ryczalt);
+        }
+        
+        .result-card--skala .result-details {
+            border-left-color: var(--color-skala);
+        }
+        
+        .result-card--liniowy .result-details {
+            border-left-color: var(--color-liniowy);
+        }
 
         /* ============================================
            NAJEM PRYWATNY SECTION
@@ -657,16 +704,35 @@
                                 <span class="result-row__value" id="ryczalt-podatek">–</span>
                             </div>
                             <div class="result-row">
-                                <span class="result-row__label">Składka zdrowotna</span>
-                                <span class="result-row__value" id="ryczalt-zdrowotna">–</span>
-                            </div>
-                            <div class="result-row">
                                 <span class="result-row__label">ZUS społeczny</span>
                                 <span class="result-row__value" id="ryczalt-zus">–</span>
                             </div>
-                            <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Roczna składka zdrow.</span>
-                                <span class="result-row__value" id="ryczalt-zdrow-rok">–</span>
+                            <div class="result-row">
+                                <span class="result-row__label">Składka zdrowotna</span>
+                                <span class="result-row__value" id="ryczalt-zdrowotna">–</span>
+                            </div>
+                            <!-- Szczegóły składki zdrowotnej -->
+                            <div class="result-details" id="ryczalt-zdrow-details">
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Próg przychodu:</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-prog">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Podstawa (mies.):</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-podstawa">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Składka 9% (mies.):</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-mies">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Składka roczna:</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-rok">–</span>
+                                </div>
+                                <div class="result-detail-row result-detail-row--green">
+                                    <span class="result-detail-label">Odliczenie 50%:</span>
+                                    <span class="result-detail-value" id="ryczalt-zdrow-odliczenie">–</span>
+                                </div>
                             </div>
                         </div>
 
@@ -688,16 +754,31 @@
                                 <span class="result-row__value" id="skala-podatek">–</span>
                             </div>
                             <div class="result-row">
+                                <span class="result-row__label">ZUS społeczny <small>(koszt)</small></span>
+                                <span class="result-row__value" id="skala-zus">–</span>
+                            </div>
+                            <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
                                 <span class="result-row__value" id="skala-zdrowotna">–</span>
                             </div>
-                            <div class="result-row">
-                                <span class="result-row__label">ZUS społeczny</span>
-                                <span class="result-row__value" id="skala-zus">–</span>
-                            </div>
-                            <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Dochód do opodatkowania</span>
-                                <span class="result-row__value" id="skala-dochod">–</span>
+                            <!-- Szczegóły składki zdrowotnej -->
+                            <div class="result-details" id="skala-zdrow-details">
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Dochód (przych.-koszty-ZUS):</span>
+                                    <span class="result-detail-value" id="skala-dochod">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Składka 9% dochodu:</span>
+                                    <span class="result-detail-value" id="skala-zdrow-obliczona">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Minimalna składka:</span>
+                                    <span class="result-detail-value" id="skala-zdrow-min">–</span>
+                                </div>
+                                <div class="result-detail-row result-detail-row--red">
+                                    <span class="result-detail-label">Odliczenie:</span>
+                                    <span class="result-detail-value">BRAK</span>
+                                </div>
                             </div>
                         </div>
                         
@@ -719,16 +800,35 @@
                                 <span class="result-row__value" id="liniowy-podatek">–</span>
                             </div>
                             <div class="result-row">
+                                <span class="result-row__label">ZUS społeczny <small>(koszt)</small></span>
+                                <span class="result-row__value" id="liniowy-zus">–</span>
+                            </div>
+                            <div class="result-row">
                                 <span class="result-row__label">Składka zdrowotna</span>
                                 <span class="result-row__value" id="liniowy-zdrowotna">–</span>
                             </div>
-                            <div class="result-row">
-                                <span class="result-row__label">ZUS społeczny</span>
-                                <span class="result-row__value" id="liniowy-zus">–</span>
-                            </div>
-                            <div class="result-row result-row--highlight">
-                                <span class="result-row__label">Dochód do opodatkowania</span>
-                                <span class="result-row__value" id="liniowy-dochod">–</span>
+                            <!-- Szczegóły składki zdrowotnej -->
+                            <div class="result-details" id="liniowy-zdrow-details">
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Dochód (przych.-koszty-ZUS):</span>
+                                    <span class="result-detail-value" id="liniowy-dochod">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Składka 4,9% dochodu:</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-obliczona">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Minimalna składka:</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-min">–</span>
+                                </div>
+                                <div class="result-detail-row result-detail-row--green">
+                                    <span class="result-detail-label">Odliczenie od dochodu:</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-odliczenie">–</span>
+                                </div>
+                                <div class="result-detail-row">
+                                    <span class="result-detail-label">Limit odliczenia:</span>
+                                    <span class="result-detail-value" id="liniowy-zdrow-limit">–</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -830,7 +930,10 @@
         'use strict';
         
         // ============================================
-        // CONSTANTS 2026
+        // CONSTANTS 2026 (aktualizacja wg przepisów)
+        // Źródło: inforlex.pl, poradnikprzedsiebiorcy.pl
+        // Przeciętne wynagrodzenie IV kw. 2025: 9228,64 zł
+        // Minimalne wynagrodzenie 2026: 4806 zł
         // ============================================
         const PARAMS_2026 = {
             // Progi i stawki PIT
@@ -841,14 +944,17 @@
             stawkaLiniowa: 0.19,
             
             // Składka zdrowotna - ryczałt (progi przychodu rocznego)
+            // Podstawy: 60%/100%/180% przeciętnego wynagrodzenia (9228,64 zł)
             zdrowRyczaltProgi: [60000, 300000],  // do 60k, 60k-300k, powyżej 300k
-            zdrowRyczaltKwoty: [461.66, 769.43, 1384.97],  // miesięczne
+            zdrowRyczaltPodstawy: [5537.18, 9228.64, 16611.55],  // podstawy miesięczne
+            zdrowRyczaltKwoty: [498.35, 830.58, 1495.04],  // składki miesięczne (9%)
             
             // Składka zdrowotna - skala i liniowy
             zdrowSkalaStawka: 0.09,         // 9% dochodu
             zdrowLiniowaStawka: 0.049,      // 4.9% dochodu
-            zdrowMinimalna: 314.96,         // minimalna miesięczna (2026 szacunek)
-            zdrowLiniowaMax: 12900,         // roczny limit odliczenia (liniowy)
+            zdrowMinPodstawa: 4806,         // min. podstawa = 100% min. wynagrodzenia
+            zdrowMinimalna: 432.54,         // minimalna miesięczna (9% × 4806)
+            zdrowLiniowaMax: 14100,         // roczny limit odliczenia (liniowy)
             zdrowRyczaltOdliczenie: 0.5,    // 50% można odliczyć od przychodu
             
             // Najem prywatny
@@ -864,11 +970,13 @@
             stawka32: 0.32,
             stawkaLiniowa: 0.19,
             zdrowRyczaltProgi: [60000, 300000],
-            zdrowRyczaltKwoty: [419.46, 699.11, 1258.39],
+            zdrowRyczaltPodstawy: [5129.50, 8549.18, 15388.52],  // 60%/100%/180% × 8549,18
+            zdrowRyczaltKwoty: [461.66, 769.43, 1384.97],
             zdrowSkalaStawka: 0.09,
             zdrowLiniowaStawka: 0.049,
-            zdrowMinimalna: 314.10,
-            zdrowLiniowaMax: 11600,
+            zdrowMinPodstawa: 3499.50,      // 75% × 4666 (minimalne 2025)
+            zdrowMinimalna: 314.96,
+            zdrowLiniowaMax: 12900,
             zdrowRyczaltOdliczenie: 0.5,
             najemProg: 100000,
             najemStawka1: 0.085,
@@ -907,14 +1015,19 @@
             const przychod = Object.values(przychodyWgStawek).reduce((a, b) => a + b, 0);
             
             // Składka zdrowotna ryczałt (zależna od przychodu)
-            let zdrowMiesiecznie;
+            let zdrowMiesiecznie, zdrowPodstawa, progIndex, progOpis;
             if (przychod <= params.zdrowRyczaltProgi[0]) {
-                zdrowMiesiecznie = params.zdrowRyczaltKwoty[0];
+                progIndex = 0;
+                progOpis = 'do 60 000 zł';
             } else if (przychod <= params.zdrowRyczaltProgi[1]) {
-                zdrowMiesiecznie = params.zdrowRyczaltKwoty[1];
+                progIndex = 1;
+                progOpis = '60 001 – 300 000 zł';
             } else {
-                zdrowMiesiecznie = params.zdrowRyczaltKwoty[2];
+                progIndex = 2;
+                progOpis = 'powyżej 300 000 zł';
             }
+            zdrowMiesiecznie = params.zdrowRyczaltKwoty[progIndex];
+            zdrowPodstawa = params.zdrowRyczaltPodstawy[progIndex];
             const zdrowRocznie = zdrowMiesiecznie * 12;
             
             // Odliczenie 50% składki zdrowotnej od przychodu
@@ -940,7 +1053,15 @@
                 podatek: podatek,
                 zdrowotna: Math.round(zdrowRocznie),
                 zus: Math.round(zusSpoleczne),
-                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne),
+                // Szczegóły składki zdrowotnej
+                zdrowDetails: {
+                    progOpis: progOpis,
+                    podstawaMies: zdrowPodstawa,
+                    skladkaMies: zdrowMiesiecznie,
+                    skladkaRoczna: zdrowRocznie,
+                    odliczenie: odliczenieZdrow
+                }
             };
         }
 
@@ -948,42 +1069,43 @@
         // SKALA PODATKOWA CALCULATIONS
         // ============================================
         function obliczSkala(params, przychod, koszty, zusSpoleczne, inneDochody) {
-            // Dochód z DG
+            // Dochód z DG (przychód - koszty - ZUS społeczny)
             const dochodDG = Math.max(0, przychod - koszty - zusSpoleczne);
             
             // Dochód łączny (z innymi dochodami)
             const dochodLaczny = dochodDG + inneDochody;
             
-            // Składka zdrowotna 9% dochodu z DG (bez innych dochodów)
-            const zdrowPodstawa = Math.max(0, przychod - koszty - zusSpoleczne);
-            let zdrowRocznie = zdrowPodstawa * params.zdrowSkalaStawka;
-            zdrowRocznie = Math.max(zdrowRocznie, params.zdrowMinimalna * 12);
+            // Składka zdrowotna 9% dochodu z DG
+            const zdrowObliczona = dochodDG * params.zdrowSkalaStawka;
+            const zdrowMinRoczna = params.zdrowMinimalna * 12;
+            const zdrowRocznie = Math.max(zdrowObliczona, zdrowMinRoczna);
             
             // Podatek wg skali (z uwzględnieniem kwoty wolnej)
-            // Kwota zmniejszająca podatek = 12% * 30000 = 3600 zł
             const kwotaZmniejszajaca = params.kwotaWolna * params.stawka12;
             
             let podatek;
             if (dochodLaczny <= params.progPodatkowy) {
-                // Tylko stawka 12%
                 podatek = dochodLaczny * params.stawka12 - kwotaZmniejszajaca;
             } else {
-                // 12% do progu + 32% powyżej
                 const czesc12 = params.progPodatkowy * params.stawka12;
                 const czesc32 = (dochodLaczny - params.progPodatkowy) * params.stawka32;
                 podatek = czesc12 + czesc32 - kwotaZmniejszajaca;
             }
             podatek = Math.max(0, Math.round(podatek));
             
-            // Część podatku od innych dochodów (proporcjonalnie)
-            // Dla uproszczenia: pokazujemy całość, ale zaznaczamy dochód z DG
-            
             return {
                 podatek: podatek,
                 zdrowotna: Math.round(zdrowRocznie),
                 zus: Math.round(zusSpoleczne),
                 dochod: Math.round(dochodLaczny),
-                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne),
+                // Szczegóły składki zdrowotnej
+                zdrowDetails: {
+                    dochodDoZdrow: dochodDG,
+                    zdrowObliczona: zdrowObliczona,
+                    zdrowMinRoczna: zdrowMinRoczna,
+                    zdrowMinMies: params.zdrowMinimalna
+                }
             };
         }
         
@@ -991,12 +1113,13 @@
         // PODATEK LINIOWY CALCULATIONS
         // ============================================
         function obliczLiniowy(params, przychod, koszty, zusSpoleczne) {
-            // Dochód z DG
+            // Dochód z DG (przychód - koszty - ZUS społeczny)
             const dochodDG = Math.max(0, przychod - koszty - zusSpoleczne);
             
             // Składka zdrowotna 4.9% dochodu
-            let zdrowRocznie = dochodDG * params.zdrowLiniowaStawka;
-            zdrowRocznie = Math.max(zdrowRocznie, params.zdrowMinimalna * 12);
+            const zdrowObliczona = dochodDG * params.zdrowLiniowaStawka;
+            const zdrowMinRoczna = params.zdrowMinimalna * 12;
+            const zdrowRocznie = Math.max(zdrowObliczona, zdrowMinRoczna);
             
             // Odliczenie składki zdrowotnej od dochodu (max limit)
             const odliczenieZdrow = Math.min(zdrowRocznie, params.zdrowLiniowaMax);
@@ -1010,7 +1133,16 @@
                 zdrowotna: Math.round(zdrowRocznie),
                 zus: Math.round(zusSpoleczne),
                 dochod: Math.round(dochodDG),
-                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne)
+                total: podatek + Math.round(zdrowRocznie) + Math.round(zusSpoleczne),
+                // Szczegóły składki zdrowotnej
+                zdrowDetails: {
+                    dochodDoZdrow: dochodDG,
+                    zdrowObliczona: zdrowObliczona,
+                    zdrowMinRoczna: zdrowMinRoczna,
+                    zdrowMinMies: params.zdrowMinimalna,
+                    odliczenie: odliczenieZdrow,
+                    limitOdliczenia: params.zdrowLiniowaMax
+                }
             };
         }
         
@@ -1080,21 +1212,37 @@
             setResult('ryczalt-podatek', ryczalt.podatek);
             setResult('ryczalt-zdrowotna', ryczalt.zdrowotna);
             setResult('ryczalt-zus', ryczalt.zus);
-            setResult('ryczalt-zdrow-rok', ryczalt.zdrowotna);
+            // Szczegóły składki zdrowotnej - Ryczałt
+            const rd = ryczalt.zdrowDetails;
+            document.getElementById('ryczalt-zdrow-prog').textContent = rd.progOpis;
+            setResult('ryczalt-zdrow-podstawa', rd.podstawaMies);
+            setResult('ryczalt-zdrow-mies', rd.skladkaMies);
+            setResult('ryczalt-zdrow-rok', rd.skladkaRoczna);
+            setResult('ryczalt-zdrow-odliczenie', rd.odliczenie);
             
             // Wyświetl wyniki - Skala
             setResult('skala-total', skala.total);
             setResult('skala-podatek', skala.podatek);
             setResult('skala-zdrowotna', skala.zdrowotna);
             setResult('skala-zus', skala.zus);
-            setResult('skala-dochod', skala.dochod);
+            // Szczegóły składki zdrowotnej - Skala
+            const sd = skala.zdrowDetails;
+            setResult('skala-dochod', sd.dochodDoZdrow);
+            setResult('skala-zdrow-obliczona', sd.zdrowObliczona);
+            setResult('skala-zdrow-min', sd.zdrowMinRoczna);
             
             // Wyświetl wyniki - Liniowy
             setResult('liniowy-total', liniowy.total);
             setResult('liniowy-podatek', liniowy.podatek);
             setResult('liniowy-zdrowotna', liniowy.zdrowotna);
             setResult('liniowy-zus', liniowy.zus);
-            setResult('liniowy-dochod', liniowy.dochod);
+            // Szczegóły składki zdrowotnej - Liniowy
+            const ld = liniowy.zdrowDetails;
+            setResult('liniowy-dochod', ld.dochodDoZdrow);
+            setResult('liniowy-zdrow-obliczona', ld.zdrowObliczona);
+            setResult('liniowy-zdrow-min', ld.zdrowMinRoczna);
+            setResult('liniowy-zdrow-odliczenie', ld.odliczenie);
+            setResult('liniowy-zdrow-limit', ld.limitOdliczenia);
             
             // Wyświetl wyniki - Najem
             setResult('najem-85', najem.podatek85);
