@@ -37,6 +37,12 @@
           "name": "Kalkulator wyboru formy opodatkowania",
           "url": "https://ebiuro24.pl/kalkulatory/forma-opodatkowania/",
           "applicationCategory": "FinanceApplication"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "Kalkulator wynagrodzeń",
+          "url": "https://ebiuro24.pl/kalkulatory/wynagrodzenia/",
+          "applicationCategory": "FinanceApplication"
         }
       ]
     }
@@ -445,8 +451,8 @@
                     </span>
                 </a>
 
-                <!-- Kalkulator wynagrodzeń - WKRÓTCE -->
-                <div class="calc-card calc-card--disabled">
+                <!-- Kalkulator wynagrodzeń - AKTYWNY -->
+                <a href="/kalkulatory/wynagrodzenia/" class="calc-card">
                     <div class="calc-card__icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
@@ -454,14 +460,20 @@
                         </svg>
                     </div>
                     <h3 class="calc-card__title">Kalkulator wynagrodzeń</h3>
-                    <p class="calc-card__desc">Przelicz wynagrodzenie brutto na netto i odwrotnie. Uwzględnia składki ZUS, podatek dochodowy, PPK i ulgi podatkowe (dla młodych, 4+).</p>
+                    <p class="calc-card__desc">Przelicz wynagrodzenie brutto na netto i odwrotnie. Uwzględnia składki ZUS, podatek dochodowy, PPK i ulgi podatkowe (PIT-0, PIT-2).</p>
                     <div class="calc-card__tags">
                         <span class="calc-card__tag">Brutto/Netto</span>
                         <span class="calc-card__tag">Umowa o pracę</span>
                         <span class="calc-card__tag">Zlecenie</span>
+                        <span class="calc-card__tag">Dzieło</span>
                     </div>
-                    <span class="calc-card__badge">Wkrótce</span>
-                </div>
+                    <span class="calc-card__cta">
+                        Otwórz kalkulator
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
 
                 <!-- Kalkulator składek ZUS - WKRÓTCE -->
                 <div class="calc-card calc-card--disabled">

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator wynagrodzeń (UoP / Zlecenie / Dzieło) 2026 | EURO-TAX</title>
+    <meta name="description" content="Oblicz wynagrodzenie netto, brutto i koszt pracodawcy. Umowa o pracę, zlecenie, dzieło. Kalkulator online z PPK i ulgami.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kalkulator wynagrodzeń 2026 | EURO-TAX">
+    <meta property="og:description" content="Oblicz wynagrodzenie netto, brutto i koszt pracodawcy. UoP, zlecenie, dzieło.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebiuro24.pl/kalkulatory/wynagrodzenia/">
+    <meta property="og:image" content="https://ebiuro24.pl/img/logo-eurotax.jpg">
+    <meta property="og:locale" content="pl_PL">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ebiuro24.pl/kalkulatory/wynagrodzenia/">
+    <link rel="icon" type="image/jpeg" href="/img/logo-eurotax.jpg">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kalkulator wynagrodzeń",
+      "url": "https://ebiuro24.pl/kalkulatory/wynagrodzenia/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" },
+      "provider": { "@type": "AccountingService", "name": "EURO-TAX Biuro Rachunkowe", "url": "https://ebiuro24.pl/" }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --color-bg: #F7FAF9;
+            --color-text: #111827;
+            --color-dark-green: #00301A;
+            --color-cta: #00B648;
+            --color-border: #E5E7EB;
+            --color-white: #FFFFFF;
+            --color-gray-50: #F9FAFB;
+            --color-gray-100: #F3F4F6;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --max-width: 1200px;
+            --radius: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+        
+        body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--color-text); background-color: var(--color-bg); }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-dark-green); }
+        a { color: var(--color-cta); text-decoration: none; }
+        a:hover { color: var(--color-dark-green); }
+
+        /* Navigation */
+        .nav { background: var(--color-white); padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav__container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--color-dark-green); }
+        .nav__logo img { height: 40px; width: auto; }
+        .nav__links { display: flex; gap: 32px; list-style: none; }
+        .nav__link { color: var(--color-text); font-weight: 500; }
+        .nav__link:hover { color: var(--color-cta); }
+        .nav__link--active { color: var(--color-cta); }
+        
+        /* Layout */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 60px 0; }
+        .section__header { text-align: center; margin-bottom: 40px; }
+        .section__subtitle { color: var(--color-gray-600); font-size: 1.125rem; }
+        
+        /* Calculator Layout */
+        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+        
+        .card { background: var(--color-white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-md); }
+        .card h3 { font-size: 1.125rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--color-border); }
+        
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 6px; color: var(--color-dark-green); }
+        .form-input, .form-select { width: 100%; padding: 10px 12px; border: 2px solid var(--color-border); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.9375rem; transition: border-color 0.2s; }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--color-cta); }
+        .form-hint { font-size: 0.75rem; color: var(--color-gray-600); margin-top: 4px; }
+        
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        
+        /* Checkboxes */
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+        .checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; cursor: pointer; }
+        .checkbox-label input { width: 18px; height: 18px; cursor: pointer; }
+        
+        /* Buttons */
+        .btn-group { display: flex; gap: 12px; margin-top: 20px; }
+        .btn { display: inline-block; padding: 12px 24px; border: none; border-radius: var(--radius); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--color-cta); color: white; }
+        .btn-primary:hover { background: #00a03e; }
+        .btn-secondary { background: var(--color-gray-100); color: var(--color-text); }
+        .btn-secondary:hover { background: var(--color-border); }
+        
+        /* Separator */
+        .sep { height: 1px; background: var(--color-border); margin: 20px 0; }
+        
+        /* Hidden */
+        .hidden { display: none !important; }
+        
+        /* Options sections */
+        .opts-section { margin-top: 16px; padding: 16px; background: var(--color-gray-50); border-radius: var(--radius); border-left: 4px solid var(--color-cta); }
+        .opts-section h4 { font-size: 0.9375rem; margin-bottom: 12px; color: var(--color-dark-green); }
+
+        /* KPI Boxes */
+        .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+        .kpi-box { background: var(--color-gray-50); border: 2px dashed var(--color-border); border-radius: var(--radius); padding: 16px; text-align: center; }
+        .kpi-box.highlight { background: #dcfce7; border-color: var(--color-cta); border-style: solid; }
+        .kpi-label { font-size: 0.75rem; color: var(--color-gray-600); margin-bottom: 4px; }
+        .kpi-value { font-size: 1.5rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-dark-green); }
+        
+        /* Results Table */
+        .results-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .results-table th, .results-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--color-gray-100); font-size: 0.875rem; }
+        .results-table th:first-child, .results-table td:first-child { text-align: left; }
+        .results-table thead th { font-size: 0.75rem; font-weight: 600; color: var(--color-gray-600); background: var(--color-gray-50); text-transform: uppercase; }
+        .results-table tbody tr:hover { background: var(--color-gray-50); }
+        .results-table .separator td { background: var(--color-gray-100); height: 2px; padding: 0; }
+        
+        /* Warning box */
+        .warn-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 0.8125rem; margin-top: 16px; }
+        
+        /* Disclaimer */
+        .disclaimer { margin-top: 32px; padding: 20px; background: var(--color-gray-50); border-radius: var(--radius); font-size: 0.8125rem; color: var(--color-gray-600); }
+        
+        /* CTA Box */
+        .cta-box { background: linear-gradient(135deg, var(--color-dark-green), #004d29); color: white; padding: 32px; border-radius: var(--radius); text-align: center; margin-top: 24px; }
+        .cta-box h3 { color: white; margin-bottom: 12px; }
+        .cta-box p { opacity: 0.9; margin-bottom: 20px; }
+        .cta-box .btn { background: var(--color-cta); color: white; padding: 14px 32px; }
+        
+        /* Footer */
+        .footer { background: var(--color-dark-green); color: #fff; padding: 40px 0 20px; margin-top: 60px; }
+        .footer__content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer a { color: rgba(255,255,255,0.8); }
+        .footer a:hover { color: #fff; }
+        .footer__copy { font-size: 0.875rem; opacity: 0.8; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .calc-wrapper { grid-template-columns: 1fr; }
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <img src="/img/logo-eurotax.jpg" alt="EURO-TAX" width="40" height="40">
+                <span>EURO-TAX</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Start</a></li>
+                <li><a href="/uslugi/" class="nav__link">Usługi</a></li>
+                <li><a href="/cennik/" class="nav__link">Cennik</a></li>
+                <li><a href="/kalkulatory/" class="nav__link nav__link--active">Kalkulatory</a></li>
+                <li><a href="/faq/" class="nav__link">FAQ</a></li>
+                <li><a href="/kontakt/" class="nav__link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Calculator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h1>Kalkulator wynagrodzeń</h1>
+                <p class="section__subtitle">Oblicz wynagrodzenie <strong>netto</strong>, <strong>brutto</strong> i <strong>koszt pracodawcy</strong> dla UoP, zlecenia i dzieła.</p>
+            </div>
+            
+            <div class="calc-wrapper">
+                <!-- INPUTS PANEL -->
+                <div class="card">
+                    <h3>Dane wejściowe</h3>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="year" class="form-label">Rok rozliczeniowy</label>
+                            <select id="year" class="form-select">
+                                <option value="2026" selected>2026</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contract" class="form-label">Rodzaj umowy</label>
+                            <select id="contract" class="form-select">
+                                <option value="uop" selected>Umowa o pracę</option>
+                                <option value="zlec">Umowa zlecenie</option>
+                                <option value="dzielo">Umowa o dzieło</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="mode" class="form-label">Co podajesz?</label>
+                            <select id="mode" class="form-select">
+                                <option value="gross" selected>Kwota brutto</option>
+                                <option value="net">Kwota netto („na rękę")</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="form-label">Kwota (PLN)</label>
+                            <input type="text" id="amount" class="form-input" value="8000" inputmode="decimal">
+                            <p class="form-hint">Możesz wpisać: 8000 albo 8 000,00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sep"></div>
+
+                    <!-- Wspólne opcje -->
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="priorIncome" class="form-label">Dochód narastająco przed tym miesiącem (PLN)</label>
+                            <input type="text" id="priorIncome" class="form-input" value="0" inputmode="decimal">
+                            <p class="form-hint">Do symulacji wejścia w II próg (120 000 zł)</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="pit2" class="form-label">PIT-2: kwota zmniejszająca (mies.)</label>
+                            <select id="pit2" class="form-select">
+                                <option value="0" selected>Brak</option>
+                                <option value="300">1/12 (300 zł)</option>
+                                <option value="150">1/24 (150 zł)</option>
+                                <option value="100">1/36 (100 zł)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="pit0" class="form-label">Zwolnienie PIT-0</label>
+                            <select id="pit0" class="form-select">
+                                <option value="none" selected>Brak</option>
+                                <option value="pit0">Tak (do limitu 85 528 zł rocznie)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pit0Remaining" class="form-label">Pozostały limit PIT-0 w roku (PLN)</label>
+                            <input type="text" id="pit0Remaining" class="form-input" value="85528" inputmode="decimal">
+                        </div>
+                    </div>
+                    
+                    <!-- Opcje UoP -->
+                    <div id="opts-uop" class="opts-section">
+                        <h4>Opcje — umowa o pracę</h4>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="kupUop" class="form-label">Koszty uzyskania (KUP)</label>
+                                <select id="kupUop" class="form-select">
+                                    <option value="local" selected>Standard (250 zł)</option>
+                                    <option value="commuter">Podwyższone (300 zł)</option>
+                                    <option value="custom">Własna kwota</option>
+                                </select>
+                            </div>
+                            <div class="form-group hidden" id="kupUopCustomWrap">
+                                <label for="kupUopCustom" class="form-label">KUP — własna kwota (PLN/mies.)</label>
+                                <input type="text" id="kupUopCustom" class="form-input" value="250" inputmode="decimal">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="form-label">50% koszty autorskie</label>
+                                <label class="checkbox-label"><input type="checkbox" id="kup50Enabled"> Uwzględnij 50% KUP dla części wynagrodzenia</label>
+                            </div>
+                            <div class="form-group hidden" id="kup50Fields">
+                                <label for="kup50PartGross" class="form-label">Część brutto objęta 50% KUP (PLN)</label>
+                                <input type="text" id="kup50PartGross" class="form-input" value="0" inputmode="decimal">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="form-label">PPK</label>
+                                <label class="checkbox-label"><input type="checkbox" id="ppkEnabledUop"> Nalicz PPK (pracownik i pracodawca)</label>
+                            </div>
+                            <div class="form-group hidden" id="ppkRatesUop">
+                                <label for="ppkEmpRate" class="form-label">PPK pracownik (%)</label>
+                                <input type="text" id="ppkEmpRate" class="form-input" value="2" inputmode="decimal">
+                            </div>
+                        </div>
+                        
+                        <div class="row hidden" id="ppkRatesUop2">
+                            <div class="form-group">
+                                <label for="ppkErRate" class="form-label">PPK pracodawca (%)</label>
+                                <input type="text" id="ppkErRate" class="form-input" value="1.5" inputmode="decimal">
+                            </div>
+                            <div class="form-group">
+                                <label for="accidentRateUop" class="form-label">Wypadkowa pracodawcy (%)</label>
+                                <input type="text" id="accidentRateUop" class="form-input" value="1,67" inputmode="decimal">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opcje Zlecenie -->
+                    <div id="opts-zlec" class="opts-section hidden">
+                        <h4>Opcje — umowa zlecenie</h4>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="zlecZUS" class="form-label">ZUS (zleceniobiorca)</label>
+                                <select id="zlecZUS" class="form-select">
+                                    <option value="full" selected>Pełny ZUS + zdrowotna</option>
+                                    <option value="no-social-health">Brak ZUS (np. student)</option>
+                                    <option value="health-only">Tylko zdrowotna</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Chorobowe (dobrowolne)</label>
+                                <label class="checkbox-label"><input type="checkbox" id="zlecSickness" checked> Uwzględnij chorobowe 2,45%</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="kupZlec" class="form-label">KUP (zlecenie)</label>
+                                <select id="kupZlec" class="form-select">
+                                    <option value="0.20" selected>20%</option>
+                                    <option value="0.50">50%</option>
+                                </select>
+                                <p class="form-hint">Liczone od (przychód – składki społeczne)</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="accidentRateZlec" class="form-label">Wypadkowa pracodawcy (%)</label>
+                                <input type="text" id="accidentRateZlec" class="form-input" value="1,67" inputmode="decimal">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="form-label">PPK</label>
+                                <label class="checkbox-label"><input type="checkbox" id="ppkEnabledZlec"> Nalicz PPK</label>
+                            </div>
+                            <div class="form-group hidden" id="ppkRatesZlec">
+                                <label for="ppkEmpRateZlec" class="form-label">PPK zleceniobiorca (%)</label>
+                                <input type="text" id="ppkEmpRateZlec" class="form-input" value="2" inputmode="decimal">
+                            </div>
+                        </div>
+                        <div class="row hidden" id="ppkRatesZlec2">
+                            <div class="form-group">
+                                <label for="ppkErRateZlec" class="form-label">PPK zleceniodawca (%)</label>
+                                <input type="text" id="ppkErRateZlec" class="form-input" value="1.5" inputmode="decimal">
+                            </div>
+                            <div class="form-group"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Opcje Dzieło -->
+                    <div id="opts-dzielo" class="opts-section hidden">
+                        <h4>Opcje — umowa o dzieło</h4>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="dzieloKUP" class="form-label">KUP (dzieło)</label>
+                                <select id="dzieloKUP" class="form-select">
+                                    <option value="0.20" selected>20%</option>
+                                    <option value="0.50">50%</option>
+                                </select>
+                                <p class="form-hint">Liczone od przychodu (brutto)</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ryczałt (do 200 zł)</label>
+                                <label class="checkbox-label"><input type="checkbox" id="dzieloRyczalt200"> Zastosuj 12% ryczałtu (bez KUP)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="button" id="calcBtn" class="btn btn-primary">Oblicz</button>
+                        <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                    
+                    <div class="warn-box">
+                        <strong>Uwaga:</strong> To kalkulator informacyjny. Kadry i płace mogą mieć specyficzne przypadki (PPK, ulgi, limity, kilka tytułów do ubezpieczeń). W razie wątpliwości skonsultuj się z nami.
+                    </div>
+                </div>
+
+                <!-- RESULTS PANEL -->
+                <div class="card">
+                    <h3>Wynik</h3>
+                    
+                    <div class="kpi-grid">
+                        <div class="kpi-box">
+                            <div class="kpi-label">Brutto</div>
+                            <div class="kpi-value" id="kpiGross">—</div>
+                        </div>
+                        <div class="kpi-box highlight">
+                            <div class="kpi-label">Netto („na rękę")</div>
+                            <div class="kpi-value" id="kpiNet">—</div>
+                        </div>
+                        <div class="kpi-box">
+                            <div class="kpi-label">Koszt pracodawcy</div>
+                            <div class="kpi-value" id="kpiEmployer">—</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sep"></div>
+                    
+                    <h4 style="font-size: 0.875rem; color: var(--color-gray-600); margin-bottom: 12px;">Szczegóły obliczeń</h4>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Pozycja</th>
+                                <th>Kwota</th>
+                            </tr>
+                        </thead>
+                        <tbody id="breakdown">
+                            <tr><td colspan="2" style="text-align: center; color: var(--color-gray-600);">Uzupełnij dane i kliknij <strong>Oblicz</strong></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="disclaimer">
+                        <p>Zaokrąglenia podstawy i zaliczki PIT do pełnych zł stosowane są zgodnie z typową praktyką płatników.</p>
+                        <p style="font-size: 0.75rem; margin-top: 8px; color: var(--color-gray-600);">Dane aktualizowane: styczeń 2026</p>
+                    </div>
+                    
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <h3>Potrzebujesz pomocy z rozliczeniem płac?</h3>
+                        <p>Skontaktuj się z nami – zajmiemy się Twoimi kadrami i płacami.</p>
+                        <a href="/kontakt/" class="btn">Umów konsultację</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__copy">© 2026 EURO-TAX Biuro Rachunkowe. Wszelkie prawa zastrzeżone.</div>
+                <div>
+                    <a href="/polityka-prywatnosci.html">Polityka prywatności</a> · 
+                    <a href="/polityka-cookies.html">Cookies</a> · 
+                    <a href="/kontakt/">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // ============================================
+        // PARAMETERS 2025/2026
+        // ============================================
+        const PARAMS = {
+            2026: {
+                minWage: 4806,
+                pit0Limit: 85528,
+                scale: { threshold: 120000, rate1: 0.12, rate2: 0.32 },
+                zusEmployee: { pension: 0.0976, disability: 0.015, sickness: 0.0245, health: 0.09 },
+                zusEmployer: { pension: 0.0976, disability: 0.065, fp: 0.0245, fgsp: 0.001, accidentDefault: 0.0167 },
+                kupUop: { local: 250, commuter: 300 },
+                kup50AnnualCap: 120000
+            },
+            2025: {
+                minWage: 4666,
+                pit0Limit: 85528,
+                scale: { threshold: 120000, rate1: 0.12, rate2: 0.32 },
+                zusEmployee: { pension: 0.0976, disability: 0.015, sickness: 0.0245, health: 0.09 },
+                zusEmployer: { pension: 0.0976, disability: 0.065, fp: 0.0245, fgsp: 0.001, accidentDefault: 0.0167 },
+                kupUop: { local: 250, commuter: 300 },
+                kup50AnnualCap: 120000
+            }
+        };
+        
+        // ============================================
+        // HELPERS
+        // ============================================
+        const el = (id) => document.getElementById(id);
+        
+        function parsePLN(v) {
+            if (typeof v !== 'string') v = String(v ?? '');
+            v = v.replace(/\s+/g, '').replace(',', '.');
+            const num = Number(v);
+            return Number.isFinite(num) ? num : 0;
+        }
+        
+        function round2(x) { return Math.round((x + Number.EPSILON) * 100) / 100; }
+        function roundPLN(x) {
+            if (!Number.isFinite(x)) return 0;
+            return x >= 0 ? Math.floor(x + 0.5) : -Math.floor((-x) + 0.5);
+        }
+        
+        function fmtPLN(x) {
+            const n = Number.isFinite(x) ? x : 0;
+            return n.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' zł';
+        }
+        
+        function clamp(x, a, b) { return Math.min(Math.max(x, a), b); }
+
+        // ============================================
+        // PIT SCALE (12% / 32%)
+        // ============================================
+        function calcPitAdvanceScale({ taxableIncomeRoundedPLN, priorTaxableIncomePLN, yearParams, monthlyTaxReductionPLN }) {
+            const thr = yearParams.scale.threshold;
+            const r1 = yearParams.scale.rate1;
+            const r2 = yearParams.scale.rate2;
+            
+            const base = Math.max(0, taxableIncomeRoundedPLN);
+            const prior = Math.max(0, priorTaxableIncomePLN);
+            
+            const leftInFirst = Math.max(0, thr - prior);
+            const part1 = Math.min(base, leftInFirst);
+            const part2 = Math.max(0, base - part1);
+            
+            const tax = part1 * r1 + part2 * r2;
+            const after = Math.max(0, tax - Math.max(0, monthlyTaxReductionPLN));
+            
+            return roundPLN(after);
+        }
+        
+        // ============================================
+        // UoP CALCULATIONS
+        // ============================================
+        function computeUoP(gross, opts, p) {
+            gross = Math.max(0, gross);
+            
+            const empSoc = {
+                pension: round2(gross * p.zusEmployee.pension),
+                disability: round2(gross * p.zusEmployee.disability),
+                sickness: round2(gross * p.zusEmployee.sickness)
+            };
+            const socSum = round2(empSoc.pension + empSoc.disability + empSoc.sickness);
+            
+            const healthBase = Math.max(0, gross - socSum);
+            const health = round2(healthBase * p.zusEmployee.health);
+            
+            const ppkEmp = opts.ppkEnabled ? round2(gross * (opts.ppkEmpRate / 100)) : 0;
+            
+            // PIT-0
+            const pit0Enabled = opts.pit0Enabled;
+            const pit0Remaining = Math.max(0, opts.pit0Remaining);
+            const exemptRevenue = pit0Enabled ? Math.min(gross, pit0Remaining) : 0;
+            const taxedRevenue = gross - exemptRevenue;
+            const ratioTaxed = gross > 0 ? (taxedRevenue / gross) : 0;
+            
+            const socForTax = round2(socSum * ratioTaxed);
+            
+            let kupFixed = Math.max(0, opts.kupFixed);
+            let kup50 = 0, kupStd = 0;
+            
+            if (opts.kup50Enabled && opts.kup50PartGross > 0) {
+                const partGross = clamp(opts.kup50PartGross, 0, gross);
+                const partTaxedRevenue = partGross * ratioTaxed;
+                const partSoc = socSum * (partGross / (gross || 1));
+                const partSocForTax = partSoc * ratioTaxed;
+                const incomeForKup50 = Math.max(0, partTaxedRevenue - partSocForTax);
+                kup50 = round2(0.5 * incomeForKup50);
+                const restTaxedRevenue = Math.max(0, taxedRevenue - partTaxedRevenue);
+                kupStd = round2(Math.min(kupFixed, restTaxedRevenue));
+            } else {
+                kupStd = round2(Math.min(kupFixed, taxedRevenue));
+            }
+            
+            const kupForTax = round2(kup50 + kupStd);
+            const taxableIncome = Math.max(0, taxedRevenue - socForTax - kupForTax);
+            const taxableRounded = roundPLN(taxableIncome);
+            
+            const pitAdvance = calcPitAdvanceScale({
+                taxableIncomeRoundedPLN: taxableRounded,
+                priorTaxableIncomePLN: opts.priorIncome,
+                yearParams: p,
+                monthlyTaxReductionPLN: opts.pit2
+            });
+            
+            const net = round2(gross - socSum - health - pitAdvance - ppkEmp);
+            
+            // Employer costs
+            const accidentRate = clamp(opts.accidentRate, 0, 0.10);
+            const erSoc = {
+                pension: round2(gross * p.zusEmployer.pension),
+                disability: round2(gross * p.zusEmployer.disability),
+                accident: round2(gross * accidentRate)
+            };
+            const fp = (gross >= p.minWage) ? round2(gross * p.zusEmployer.fp) : 0;
+            const fgsp = round2(gross * p.zusEmployer.fgsp);
+            const ppkEr = opts.ppkEnabled ? round2(gross * (opts.ppkErRate / 100)) : 0;
+            
+            const employerCost = round2(gross + erSoc.pension + erSoc.disability + erSoc.accident + fp + fgsp + ppkEr);
+            
+            return {
+                gross, net, employerCost,
+                breakdown: [
+                    ['Składka emerytalna (pracownik)', empSoc.pension],
+                    ['Składka rentowa (pracownik)', empSoc.disability],
+                    ['Składka chorobowa (pracownik)', empSoc.sickness],
+                    ['Składka zdrowotna (pracownik)', health],
+                    ['PPK (pracownik)', ppkEmp],
+                    ['KUP do PIT', kupForTax],
+                    ['Podstawa PIT (zaokr.)', taxableRounded],
+                    ['Zaliczka PIT (zaokr.)', pitAdvance],
+                    ['—', NaN],
+                    ['Składka emerytalna (pracodawca)', erSoc.pension],
+                    ['Składka rentowa (pracodawca)', erSoc.disability],
+                    ['Składka wypadkowa (pracodawca)', erSoc.accident],
+                    ['Fundusz Pracy / Solidarnościowy', fp],
+                    ['FGŚP', fgsp],
+                    ['PPK (pracodawca)', ppkEr]
+                ]
+            };
+        }
+
+        // ============================================
+        // ZLECENIE CALCULATIONS
+        // ============================================
+        function computeZlecenie(gross, opts, p) {
+            gross = Math.max(0, gross);
+            
+            const zusMode = opts.zusMode;
+            const sicknessOn = !!opts.sicknessOn;
+            
+            let empSocSum = 0;
+            let empSoc = { pension: 0, disability: 0, sickness: 0 };
+            let healthBase = 0, health = 0;
+            
+            if (zusMode === 'full') {
+                empSoc.pension = round2(gross * p.zusEmployee.pension);
+                empSoc.disability = round2(gross * p.zusEmployee.disability);
+                empSoc.sickness = sicknessOn ? round2(gross * p.zusEmployee.sickness) : 0;
+                empSocSum = round2(empSoc.pension + empSoc.disability + empSoc.sickness);
+                healthBase = Math.max(0, gross - empSocSum);
+                health = round2(healthBase * p.zusEmployee.health);
+            } else if (zusMode === 'health-only') {
+                empSocSum = 0;
+                healthBase = gross;
+                health = round2(healthBase * p.zusEmployee.health);
+            }
+            
+            const ppkEmp = opts.ppkEnabled ? round2(gross * (opts.ppkEmpRate / 100)) : 0;
+            
+            const pit0Enabled = opts.pit0Enabled;
+            const pit0Remaining = Math.max(0, opts.pit0Remaining);
+            const exemptRevenue = pit0Enabled ? Math.min(gross, pit0Remaining) : 0;
+            const taxedRevenue = gross - exemptRevenue;
+            const ratioTaxed = gross > 0 ? (taxedRevenue / gross) : 0;
+            
+            const socForTax = round2(empSocSum * ratioTaxed);
+            const kupRate = clamp(opts.kupRate, 0, 0.9);
+            const kup = round2(Math.max(0, (taxedRevenue - socForTax) * kupRate));
+            const taxableIncome = Math.max(0, taxedRevenue - socForTax - kup);
+            const taxableRounded = roundPLN(taxableIncome);
+            
+            const pitAdvance = calcPitAdvanceScale({
+                taxableIncomeRoundedPLN: taxableRounded,
+                priorTaxableIncomePLN: opts.priorIncome,
+                yearParams: p,
+                monthlyTaxReductionPLN: opts.pit2
+            });
+            
+            const net = round2(gross - empSocSum - health - pitAdvance - ppkEmp);
+            
+            const accidentRate = clamp(opts.accidentRate, 0, 0.10);
+            let erSoc = { pension: 0, disability: 0, accident: 0 };
+            let fp = 0, fgsp = 0;
+            
+            if (zusMode === 'full') {
+                erSoc.pension = round2(gross * p.zusEmployer.pension);
+                erSoc.disability = round2(gross * p.zusEmployer.disability);
+                erSoc.accident = round2(gross * accidentRate);
+                fp = (gross >= p.minWage) ? round2(gross * p.zusEmployer.fp) : 0;
+                fgsp = round2(gross * p.zusEmployer.fgsp);
+            }
+            
+            const ppkEr = opts.ppkEnabled ? round2(gross * (opts.ppkErRate / 100)) : 0;
+            const employerCost = round2(gross + erSoc.pension + erSoc.disability + erSoc.accident + fp + fgsp + ppkEr);
+            
+            return {
+                gross, net, employerCost,
+                breakdown: [
+                    ['Składka emerytalna (zleceniobiorca)', empSoc.pension],
+                    ['Składka rentowa (zleceniobiorca)', empSoc.disability],
+                    ['Składka chorobowa (zleceniobiorca)', empSoc.sickness],
+                    ['Składka zdrowotna (zleceniobiorca)', health],
+                    ['PPK (zleceniobiorca)', ppkEmp],
+                    ['KUP do PIT', kup],
+                    ['Podstawa PIT (zaokr.)', taxableRounded],
+                    ['Zaliczka PIT (zaokr.)', pitAdvance],
+                    ['—', NaN],
+                    ['Składka emerytalna (zleceniodawca)', erSoc.pension],
+                    ['Składka rentowa (zleceniodawca)', erSoc.disability],
+                    ['Składka wypadkowa (zleceniodawca)', erSoc.accident],
+                    ['Fundusz Pracy / Solidarnościowy', fp],
+                    ['FGŚP', fgsp],
+                    ['PPK (zleceniodawca)', ppkEr]
+                ]
+            };
+        }
+
+        // ============================================
+        // DZIEŁO CALCULATIONS
+        // ============================================
+        function computeDzielo(gross, opts, p) {
+            gross = Math.max(0, gross);
+            
+            const ryczalt200 = !!opts.ryczalt200 && gross <= 200.00;
+            
+            let kup = 0;
+            let taxableRounded = 0;
+            let pitAdvance = 0;
+            
+            if (ryczalt200) {
+                pitAdvance = roundPLN(gross * p.scale.rate1);
+            } else {
+                const pit0Enabled = opts.pit0Enabled;
+                const pit0Remaining = Math.max(0, opts.pit0Remaining);
+                const exemptRevenue = pit0Enabled ? Math.min(gross, pit0Remaining) : 0;
+                const taxedRevenue = gross - exemptRevenue;
+                
+                const kupRate = clamp(opts.kupRate, 0, 0.9);
+                kup = round2(taxedRevenue * kupRate);
+                
+                const taxableIncome = Math.max(0, taxedRevenue - kup);
+                taxableRounded = roundPLN(taxableIncome);
+                
+                pitAdvance = calcPitAdvanceScale({
+                    taxableIncomeRoundedPLN: taxableRounded,
+                    priorTaxableIncomePLN: opts.priorIncome,
+                    yearParams: p,
+                    monthlyTaxReductionPLN: opts.pit2
+                });
+            }
+            
+            const net = round2(gross - pitAdvance);
+            const employerCost = round2(gross);
+            
+            return {
+                gross, net, employerCost,
+                breakdown: [
+                    ['Składki ZUS / zdrowotna', 0],
+                    ['KUP do PIT', kup],
+                    ['Podstawa PIT (zaokr.)', taxableRounded],
+                    ['Zaliczka PIT (zaokr.)', pitAdvance],
+                    ['Koszt pracodawcy', employerCost]
+                ]
+            };
+        }
+        
+        // ============================================
+        // NET → GROSS SOLVER
+        // ============================================
+        function solveGrossForNet(targetNet, fnNetFromGross) {
+            targetNet = Math.max(0, targetNet);
+            
+            let lo = 0;
+            let hi = Math.max(100, targetNet * 2.2 + 2000);
+            
+            for (let i = 0; i < 25; i++) {
+                const n = fnNetFromGross(hi);
+                if (n >= targetNet) break;
+                hi *= 1.4;
+            }
+            
+            for (let i = 0; i < 60; i++) {
+                const mid = (lo + hi) / 2;
+                const n = fnNetFromGross(mid);
+                if (Math.abs(n - targetNet) < 0.01) return mid;
+                if (n < targetNet) lo = mid;
+                else hi = mid;
+            }
+            return hi;
+        }
+
+        // ============================================
+        // UI VISIBILITY
+        // ============================================
+        function syncVisibility() {
+            const contract = el('contract').value;
+            
+            el('opts-uop').classList.toggle('hidden', contract !== 'uop');
+            el('opts-zlec').classList.toggle('hidden', contract !== 'zlec');
+            el('opts-dzielo').classList.toggle('hidden', contract !== 'dzielo');
+            
+            const kupSel = el('kupUop').value;
+            el('kupUopCustomWrap').classList.toggle('hidden', kupSel !== 'custom');
+            
+            const kup50Enabled = el('kup50Enabled').checked;
+            el('kup50Fields').classList.toggle('hidden', !kup50Enabled);
+            
+            const ppkOnUop = el('ppkEnabledUop').checked;
+            el('ppkRatesUop').classList.toggle('hidden', !ppkOnUop);
+            el('ppkRatesUop2').classList.toggle('hidden', !ppkOnUop);
+            
+            const ppkOnZlec = el('ppkEnabledZlec').checked;
+            el('ppkRatesZlec').classList.toggle('hidden', !ppkOnZlec);
+            el('ppkRatesZlec2').classList.toggle('hidden', !ppkOnZlec);
+        }
+        
+        // ============================================
+        // MAIN COMPUTE
+        // ============================================
+        function compute() {
+            const year = Number(el('year').value);
+            const p = PARAMS[year] ?? PARAMS[2026];
+            const mode = el('mode').value;
+            const amount = parsePLN(el('amount').value);
+            const contract = el('contract').value;
+            
+            const commonOpts = {
+                priorIncome: parsePLN(el('priorIncome').value),
+                pit2: parsePLN(el('pit2').value),
+                pit0Enabled: el('pit0').value === 'pit0',
+                pit0Remaining: parsePLN(el('pit0Remaining').value)
+            };
+            
+            let res = null;
+            
+            if (contract === 'uop') {
+                let kupFixed = 0;
+                const kupSel = el('kupUop').value;
+                if (kupSel === 'local') kupFixed = p.kupUop.local;
+                else if (kupSel === 'commuter') kupFixed = p.kupUop.commuter;
+                else kupFixed = parsePLN(el('kupUopCustom').value);
+                
+                const ppkEnabled = el('ppkEnabledUop').checked;
+                const opts = {
+                    ...commonOpts,
+                    kupFixed,
+                    kup50Enabled: el('kup50Enabled').checked,
+                    kup50PartGross: parsePLN(el('kup50PartGross').value),
+                    ppkEnabled,
+                    ppkEmpRate: ppkEnabled ? parsePLN(el('ppkEmpRate').value) : 0,
+                    ppkErRate: ppkEnabled ? parsePLN(el('ppkErRate').value) : 0,
+                    accidentRate: parsePLN(el('accidentRateUop').value) / 100 || p.zusEmployer.accidentDefault
+                };
+                
+                if (mode === 'gross') {
+                    res = computeUoP(amount, opts, p);
+                } else {
+                    const gross = solveGrossForNet(amount, (g) => computeUoP(g, opts, p).net);
+                    res = computeUoP(gross, opts, p);
+                }
+            }
+            
+            if (contract === 'zlec') {
+                const ppkEnabled = el('ppkEnabledZlec').checked;
+                const opts = {
+                    ...commonOpts,
+                    zusMode: el('zlecZUS').value,
+                    sicknessOn: el('zlecSickness').checked,
+                    kupRate: parsePLN(el('kupZlec').value),
+                    ppkEnabled,
+                    ppkEmpRate: ppkEnabled ? parsePLN(el('ppkEmpRateZlec').value) : 0,
+                    ppkErRate: ppkEnabled ? parsePLN(el('ppkErRateZlec').value) : 0,
+                    accidentRate: parsePLN(el('accidentRateZlec').value) / 100 || p.zusEmployer.accidentDefault
+                };
+                
+                if (mode === 'gross') {
+                    res = computeZlecenie(amount, opts, p);
+                } else {
+                    const gross = solveGrossForNet(amount, (g) => computeZlecenie(g, opts, p).net);
+                    res = computeZlecenie(gross, opts, p);
+                }
+            }
+            
+            if (contract === 'dzielo') {
+                const opts = {
+                    ...commonOpts,
+                    kupRate: parsePLN(el('dzieloKUP').value),
+                    ryczalt200: el('dzieloRyczalt200').checked
+                };
+                
+                if (mode === 'gross') {
+                    res = computeDzielo(amount, opts, p);
+                } else {
+                    const gross = solveGrossForNet(amount, (g) => computeDzielo(g, opts, p).net);
+                    res = computeDzielo(gross, opts, p);
+                }
+            }
+            
+            render(res);
+        }
+
+        // ============================================
+        // RENDER RESULTS
+        // ============================================
+        function render(res) {
+            if (!res) {
+                el('kpiGross').textContent = '—';
+                el('kpiNet').textContent = '—';
+                el('kpiEmployer').textContent = '—';
+                return;
+            }
+            
+            el('kpiGross').textContent = fmtPLN(res.gross);
+            el('kpiNet').textContent = fmtPLN(res.net);
+            el('kpiEmployer').textContent = fmtPLN(res.employerCost);
+            
+            const tbody = el('breakdown');
+            tbody.innerHTML = '';
+            
+            for (const [label, value] of res.breakdown) {
+                if (Number.isNaN(value)) {
+                    const tr = document.createElement('tr');
+                    tr.className = 'separator';
+                    tr.innerHTML = '<td colspan="2"></td>';
+                    tbody.appendChild(tr);
+                    continue;
+                }
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${label}</td><td>${fmtPLN(value)}</td>`;
+                tbody.appendChild(tr);
+            }
+        }
+        
+        // ============================================
+        // RESET
+        // ============================================
+        function reset() {
+            el('year').value = '2026';
+            el('contract').value = 'uop';
+            el('mode').value = 'gross';
+            el('amount').value = '8000';
+            el('priorIncome').value = '0';
+            el('pit2').value = '0';
+            el('pit0').value = 'none';
+            el('pit0Remaining').value = '85528';
+            
+            el('kupUop').value = 'local';
+            el('kupUopCustom').value = '250';
+            el('kup50Enabled').checked = false;
+            el('kup50PartGross').value = '0';
+            el('ppkEnabledUop').checked = false;
+            el('ppkEmpRate').value = '2';
+            el('ppkErRate').value = '1.5';
+            el('accidentRateUop').value = '1,67';
+            
+            el('zlecZUS').value = 'full';
+            el('zlecSickness').checked = true;
+            el('kupZlec').value = '0.20';
+            el('accidentRateZlec').value = '1,67';
+            el('ppkEnabledZlec').checked = false;
+            el('ppkEmpRateZlec').value = '2';
+            el('ppkErRateZlec').value = '1.5';
+            
+            el('dzieloKUP').value = '0.20';
+            el('dzieloRyczalt200').checked = false;
+            
+            syncVisibility();
+            render(null);
+        }
+        
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        ['year', 'contract', 'mode', 'kupUop', 'kup50Enabled', 'ppkEnabledUop', 'ppkEnabledZlec', 'pit0'].forEach(id => {
+            el(id).addEventListener('change', syncVisibility);
+        });
+        
+        el('calcBtn').addEventListener('click', compute);
+        el('resetBtn').addEventListener('click', reset);
+        
+        // Init
+        syncVisibility();
+    })();
+    </script>
+</body>
+</html>
