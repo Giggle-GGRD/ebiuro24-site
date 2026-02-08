@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator składek ZUS przedsiębiorcy 2026 | EURO-TAX</title>
+    <meta name="description" content="Oblicz składki ZUS przedsiębiorcy: emerytalne, rentowe, chorobowe, wypadkowe, zdrowotne. Ulga na start, preferencyjne, pełny ZUS, Mały ZUS Plus.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kalkulator składek ZUS przedsiębiorcy 2026 | EURO-TAX">
+    <meta property="og:description" content="Oblicz składki ZUS: społeczne i zdrowotne. Ulga na start, preferencyjne, pełny ZUS.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ebiuro24.pl/kalkulatory/zus/">
+    <meta property="og:image" content="https://ebiuro24.pl/img/logo-eurotax.jpg">
+    <meta property="og:locale" content="pl_PL">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ebiuro24.pl/kalkulatory/zus/">
+    <link rel="icon" type="image/jpeg" href="/img/logo-eurotax.jpg">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kalkulator składek ZUS przedsiębiorcy",
+      "url": "https://ebiuro24.pl/kalkulatory/zus/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" },
+      "provider": { "@type": "AccountingService", "name": "EURO-TAX Biuro Rachunkowe", "url": "https://ebiuro24.pl/" }
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --color-bg: #F7FAF9;
+            --color-text: #111827;
+            --color-dark-green: #00301A;
+            --color-cta: #00B648;
+            --color-border: #E5E7EB;
+            --color-white: #FFFFFF;
+            --color-gray-50: #F9FAFB;
+            --color-gray-100: #F3F4F6;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            --max-width: 1200px;
+            --radius: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+        
+        body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--color-text); background-color: var(--color-bg); }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--color-dark-green); }
+        a { color: var(--color-cta); text-decoration: none; }
+        a:hover { color: var(--color-dark-green); }
+
+        /* Navigation */
+        .nav { background: var(--color-white); padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav__container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .nav__logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem; color: var(--color-dark-green); }
+        .nav__logo img { height: 40px; width: auto; }
+        .nav__links { display: flex; gap: 32px; list-style: none; }
+        .nav__link { color: var(--color-text); font-weight: 500; }
+        .nav__link:hover { color: var(--color-cta); }
+        .nav__link--active { color: var(--color-cta); }
+        
+        /* Layout */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 60px 0; }
+        .section__header { text-align: center; margin-bottom: 40px; }
+        .section__subtitle { color: var(--color-gray-600); font-size: 1.125rem; }
+        
+        /* Calculator Layout */
+        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+        
+        .card { background: var(--color-white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-md); }
+        .card h3 { font-size: 1.125rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--color-border); }
+        
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 6px; color: var(--color-dark-green); }
+        .form-input, .form-select { width: 100%; padding: 10px 12px; border: 2px solid var(--color-border); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.9375rem; transition: border-color 0.2s; }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--color-cta); }
+        .form-input:disabled { background: var(--color-gray-100); cursor: not-allowed; }
+        .form-hint { font-size: 0.75rem; color: var(--color-gray-600); margin-top: 4px; }
+        
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        
+        /* Checkboxes */
+        .checkbox-wrap { display: flex; gap: 16px; margin-bottom: 16px; }
+        .checkbox-box { flex: 1; padding: 12px; border: 2px solid var(--color-border); border-radius: var(--radius); background: var(--color-gray-50); }
+        .checkbox-box label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+        .checkbox-box input { width: 18px; height: 18px; margin-top: 2px; cursor: pointer; }
+        .checkbox-box .cb-title { font-weight: 600; font-size: 0.875rem; color: var(--color-dark-green); }
+        .checkbox-box .cb-desc { font-size: 0.75rem; color: var(--color-gray-600); margin-top: 2px; }
+        
+        /* Buttons */
+        .btn-group { display: flex; gap: 12px; margin-top: 20px; }
+        .btn { display: inline-block; padding: 12px 24px; border: none; border-radius: var(--radius); font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--color-cta); color: white; }
+        .btn-primary:hover { background: #00a03e; }
+        .btn-secondary { background: var(--color-gray-100); color: var(--color-text); }
+        .btn-secondary:hover { background: var(--color-border); }
+        
+        /* Separator */
+        .sep { height: 1px; background: var(--color-border); margin: 20px 0; }
+        
+        /* Hidden */
+        .hidden { display: none !important; }
+
+        /* Results Table */
+        .results-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .results-table th, .results-table td { padding: 12px; text-align: right; border-bottom: 1px solid var(--color-gray-100); font-size: 0.9375rem; }
+        .results-table th:first-child, .results-table td:first-child { text-align: left; }
+        .results-table thead th { font-size: 0.75rem; font-weight: 600; color: var(--color-gray-600); background: var(--color-gray-50); text-transform: uppercase; }
+        .results-table tbody tr:hover { background: var(--color-gray-50); }
+        .results-table .total-row { background: #dcfce7; font-weight: 700; }
+        .results-table .total-row td { color: var(--color-dark-green); font-size: 1rem; }
+        
+        /* Info boxes */
+        .info-box { padding: 12px 16px; border-radius: var(--radius); font-size: 0.8125rem; margin-top: 16px; }
+        .info-box--note { background: #ecfdf5; border-left: 4px solid var(--color-cta); color: #065f46; }
+        .info-box--warn { background: #fef3c7; border-left: 4px solid #f59e0b; color: #92400e; }
+        .info-box--danger { background: #fee2e2; border-left: 4px solid #ef4444; color: #991b1b; }
+        
+        /* Summary */
+        .summary-box { background: var(--color-gray-50); padding: 16px; border-radius: var(--radius); margin-top: 16px; font-size: 0.875rem; }
+        .summary-box strong { color: var(--color-dark-green); }
+        
+        /* Disclaimer */
+        .disclaimer { margin-top: 24px; padding: 20px; background: var(--color-gray-50); border-radius: var(--radius); font-size: 0.8125rem; color: var(--color-gray-600); }
+        
+        /* CTA Box */
+        .cta-box { background: linear-gradient(135deg, var(--color-dark-green), #004d29); color: white; padding: 32px; border-radius: var(--radius); text-align: center; margin-top: 24px; }
+        .cta-box h3 { color: white; margin-bottom: 12px; }
+        .cta-box p { opacity: 0.9; margin-bottom: 20px; }
+        .cta-box .btn { background: var(--color-cta); color: white; padding: 14px 32px; }
+        
+        /* Footer */
+        .footer { background: var(--color-dark-green); color: #fff; padding: 40px 0 20px; margin-top: 60px; }
+        .footer__content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer a { color: rgba(255,255,255,0.8); }
+        .footer a:hover { color: #fff; }
+        .footer__copy { font-size: 0.875rem; opacity: 0.8; }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .calc-wrapper { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .row { grid-template-columns: 1fr; }
+            .checkbox-wrap { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <img src="/img/logo-eurotax.jpg" alt="EURO-TAX" width="40" height="40">
+                <span>EURO-TAX</span>
+            </a>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Start</a></li>
+                <li><a href="/uslugi/" class="nav__link">Usługi</a></li>
+                <li><a href="/cennik/" class="nav__link">Cennik</a></li>
+                <li><a href="/kalkulatory/" class="nav__link nav__link--active">Kalkulatory</a></li>
+                <li><a href="/faq/" class="nav__link">FAQ</a></li>
+                <li><a href="/kontakt/" class="nav__link">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Calculator Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h1>Kalkulator składek ZUS przedsiębiorcy</h1>
+                <p class="section__subtitle">Oblicz składki społeczne i zdrowotne dla różnych wariantów: ulga na start, preferencyjne, pełny ZUS, własna podstawa.</p>
+            </div>
+            
+            <div class="calc-wrapper">
+                <!-- INPUTS PANEL -->
+                <div class="card">
+                    <h3>Dane wejściowe</h3>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="year" class="form-label">Rok</label>
+                            <select id="year" class="form-select">
+                                <option value="2026" selected>2026</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="month" class="form-label">Miesiąc</label>
+                            <select id="month" class="form-select">
+                                <option value="1">styczeń</option>
+                                <option value="2" selected>luty</option>
+                                <option value="3">marzec</option>
+                                <option value="4">kwiecień</option>
+                                <option value="5">maj</option>
+                                <option value="6">czerwiec</option>
+                                <option value="7">lipiec</option>
+                                <option value="8">sierpień</option>
+                                <option value="9">wrzesień</option>
+                                <option value="10">październik</option>
+                                <option value="11">listopad</option>
+                                <option value="12">grudzień</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="socialPackage" class="form-label">Pakiet składek społecznych</label>
+                            <select id="socialPackage" class="form-select">
+                                <option value="start">Ulga na start (0 zł społeczne)</option>
+                                <option value="pref">Preferencyjne (30% minimalnego)</option>
+                                <option value="full" selected>Pełne („duży ZUS" – 60% prognozowanego)</option>
+                                <option value="custom">Własna podstawa (np. Mały ZUS Plus)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="customBase" class="form-label">Własna podstawa społecznych (zł)</label>
+                            <input type="text" id="customBase" class="form-input" placeholder="np. 2500,00" disabled inputmode="decimal">
+                            <p class="form-hint">Aktywne tylko dla opcji „Własna podstawa"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="sep"></div>
+
+                    <!-- Checkboxes -->
+                    <div class="checkbox-wrap">
+                        <div class="checkbox-box">
+                            <label>
+                                <input type="checkbox" id="isChorobowe" checked>
+                                <div>
+                                    <div class="cb-title">Dobrowolne chorobowe</div>
+                                    <div class="cb-desc">2,45% podstawy społecznych</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="checkbox-box">
+                            <label>
+                                <input type="checkbox" id="isFP" checked>
+                                <div>
+                                    <div class="cb-title">Fundusz Pracy (FP)</div>
+                                    <div class="cb-desc">2,45% podstawy (dla „dużego ZUS")</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="wypadkoweRate" class="form-label">Stopa wypadkowa (%)</label>
+                            <input type="text" id="wypadkoweRate" class="form-input" value="1,67" inputmode="decimal">
+                            <p class="form-hint">Wpisz swoją indywidualną stopę wypadkową</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="healthMode" class="form-label">Składka zdrowotna</label>
+                            <select id="healthMode" class="form-select">
+                                <option value="none">Nie licz zdrowotnej</option>
+                                <option value="ryczalt">Ryczałt (progi 60k / 300k)</option>
+                                <option value="skala">Skala podatkowa (9% dochodu)</option>
+                                <option value="liniowy">Podatek liniowy (4,9% dochodu)</option>
+                                <option value="karta">Karta podatkowa (stała kwota)</option>
+                                <option value="wspolpracujacy">Osoba współpracująca (stała kwota)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Health inputs (conditional) -->
+                    <div class="row hidden" id="healthInputs">
+                        <div class="form-group" id="incomeWrap">
+                            <label for="income" class="form-label">Dochód z poprzedniego miesiąca (zł)</label>
+                            <input type="text" id="income" class="form-input" placeholder="np. 12000,00" inputmode="decimal">
+                            <p class="form-hint">Dla skali/liniowego – dochód stanowiący podstawę zdrowotnej</p>
+                        </div>
+                        <div class="form-group hidden" id="revenueWrap">
+                            <label for="revenue" class="form-label">Przychód roczny (zł)</label>
+                            <input type="text" id="revenue" class="form-input" placeholder="np. 85000" inputmode="decimal">
+                            <p class="form-hint">Dla ryczałtu – przychód określa próg składki</p>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="button" id="calcBtn" class="btn btn-primary">Przelicz</button>
+                        <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                    
+                    <div class="info-box info-box--warn hidden" id="dynamicNote"></div>
+                </div>
+
+                <!-- RESULTS PANEL -->
+                <div class="card">
+                    <h3>Wynik – składki za wybrany miesiąc</h3>
+                    
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Pozycja</th>
+                                <th>Kwota</th>
+                            </tr>
+                        </thead>
+                        <tbody id="outBody">
+                            <tr><td>Emerytalne</td><td>—</td></tr>
+                            <tr><td>Rentowe</td><td>—</td></tr>
+                            <tr><td>Chorobowe</td><td>—</td></tr>
+                            <tr><td>Wypadkowe</td><td>—</td></tr>
+                            <tr><td>Fundusz Pracy</td><td>—</td></tr>
+                            <tr><td>Zdrowotne</td><td>—</td></tr>
+                            <tr class="total-row"><td>RAZEM</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="summary-box">
+                        <div>Podstawa społecznych: <strong id="baseLabel">—</strong></div>
+                        <div style="margin-top: 8px;">Uwagi: <span id="remarks">—</span></div>
+                    </div>
+                    
+                    <div class="info-box info-box--note" id="healthInfoBox" style="display: none;"></div>
+                    
+                    <div class="disclaimer">
+                        <p><strong>Uwaga praktyczna:</strong> Ten kalkulator liczy składki dla pojedynczego miesiąca. Dla zdrowotnej na skali/liniowym ZUS rozlicza się w logice roku składkowego i może dochodzić do korekt rocznych.</p>
+                        <p style="margin-top: 8px; font-size: 0.75rem;">Dane aktualizowane: styczeń 2026</p>
+                    </div>
+                    
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <h3>Potrzebujesz pomocy z ZUS?</h3>
+                        <p>Skontaktuj się z nami – zajmiemy się Twoimi składkami i deklaracjami.</p>
+                        <a href="/kontakt/" class="btn">Umów konsultację</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__copy">© 2026 EURO-TAX Biuro Rachunkowe. Wszelkie prawa zastrzeżone.</div>
+                <div>
+                    <a href="/polityka-prywatnosci.html">Polityka prywatności</a> · 
+                    <a href="/polityka-cookies.html">Cookies</a> · 
+                    <a href="/kontakt/">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+    (function() {
+        'use strict';
+        
+        // ============================================
+        // PARAMETERS 2025/2026
+        // ============================================
+        const YEARS = {
+            2026: {
+                minWage: 4806.00,
+                socialBasePref: 1441.80,
+                socialBaseFull: 5652.00,
+                health: {
+                    minHealthJan: 314.96,
+                    minHealthOther: 432.54,
+                    minBaseJan: 3499.50,
+                    minBaseOther: 4806.00,
+                    cardMonthly: 432.54,
+                    wspolpracujacyMonthly: 622.93,
+                    ryczalt: [
+                        { max: 60000, base: 5537.18, premium: 498.35 },
+                        { max: 300000, base: 9228.64, premium: 830.58 },
+                        { max: Infinity, base: 16611.55, premium: 1495.04 }
+                    ]
+                }
+            },
+            2025: {
+                minWage: 4666.00,
+                socialBasePref: 1399.80,
+                socialBaseFull: 5203.80,
+                health: {
+                    minHealthJan: 381.78,
+                    minHealthOther: 314.96,
+                    minBaseJan: 4242.00,
+                    minBaseOther: 3499.50,
+                    cardMonthly: 314.96,
+                    wspolpracujacyMonthly: 577.07,
+                    ryczalt: [
+                        { max: 60000, base: 5129.51, premium: 461.66 },
+                        { max: 300000, base: 8549.18, premium: 769.43 },
+                        { max: Infinity, base: 15388.52, premium: 1384.97 }
+                    ]
+                }
+            }
+        };
+        
+        const RATES = {
+            emerytalna: 0.1952,
+            rentowa: 0.08,
+            chorobowa: 0.0245,
+            fp: 0.0245
+        };
+        
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const el = (id) => document.getElementById(id);
+        const els = {
+            year: el('year'),
+            month: el('month'),
+            socialPackage: el('socialPackage'),
+            customBase: el('customBase'),
+            isChorobowe: el('isChorobowe'),
+            isFP: el('isFP'),
+            wypadkoweRate: el('wypadkoweRate'),
+            healthMode: el('healthMode'),
+            healthInputs: el('healthInputs'),
+            incomeWrap: el('incomeWrap'),
+            revenueWrap: el('revenueWrap'),
+            income: el('income'),
+            revenue: el('revenue'),
+            outBody: el('outBody'),
+            baseLabel: el('baseLabel'),
+            remarks: el('remarks'),
+            healthInfoBox: el('healthInfoBox'),
+            dynamicNote: el('dynamicNote'),
+            calcBtn: el('calcBtn'),
+            resetBtn: el('resetBtn')
+        };
+        
+        // ============================================
+        // HELPERS
+        // ============================================
+        function num(v) {
+            if (typeof v !== 'string') v = String(v ?? '');
+            const x = Number(v.replace(/\s+/g, '').replace(',', '.'));
+            return Number.isFinite(x) ? x : 0;
+        }
+        
+        function pctToRate(p) { return num(p) / 100; }
+        
+        function round2(x) { return Math.round((x + Number.EPSILON) * 100) / 100; }
+        
+        function fmtPLN(x) {
+            const n = Number.isFinite(x) ? x : 0;
+            return n.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' zł';
+        }
+
+        // ============================================
+        // CALCULATION FUNCTIONS
+        // ============================================
+        function getMinHealthCfg(year, month) {
+            const H = YEARS[year].health;
+            return (month === 1)
+                ? { minPremium: H.minHealthJan, minBase: H.minBaseJan }
+                : { minPremium: H.minHealthOther, minBase: H.minBaseOther };
+        }
+        
+        function resolveSocialBase(year, socialPackage, customBase) {
+            const Y = YEARS[year];
+            if (socialPackage === 'start') return { base: 0, label: 'Ulga na start (społeczne: 0 zł)' };
+            if (socialPackage === 'pref') return { base: Y.socialBasePref, label: `Preferencyjne: ${fmtPLN(Y.socialBasePref)} (30% minimalnego)` };
+            if (socialPackage === 'full') return { base: Y.socialBaseFull, label: `Pełne: ${fmtPLN(Y.socialBaseFull)} (60% prognozowanego)` };
+            if (socialPackage === 'custom') return { base: Math.max(0, num(customBase)), label: `Własna podstawa: ${fmtPLN(Math.max(0, num(customBase)))}` };
+            return { base: 0, label: '—' };
+        }
+        
+        function computeHealth(year, month, mode, income, revenue) {
+            const H = YEARS[year].health;
+            const { minPremium, minBase } = getMinHealthCfg(year, month);
+            
+            if (mode === 'none') {
+                return { value: 0, label: 'Zdrowotna: nie liczona' };
+            }
+            if (mode === 'karta') {
+                return { value: H.cardMonthly, label: `Karta podatkowa: stała składka ${fmtPLN(H.cardMonthly)}` };
+            }
+            if (mode === 'wspolpracujacy') {
+                return { value: H.wspolpracujacyMonthly, label: `Osoba współpracująca: stała składka ${fmtPLN(H.wspolpracujacyMonthly)}` };
+            }
+            if (mode === 'ryczalt') {
+                const rev = num(revenue);
+                const tier = H.ryczalt.find(t => rev <= t.max) || H.ryczalt[0];
+                const note = (Number.isFinite(rev) && rev > 0)
+                    ? `Ryczałt: przychód roczny ${fmtPLN(rev)} → próg ${tier.max === Infinity ? '> 300 000' : '≤ ' + tier.max.toLocaleString('pl-PL')} zł`
+                    : 'Ryczałt: brak przychodu rocznego → przyjmuję próg ≤ 60 000 zł';
+                return { value: tier.premium, label: `${note}; zdrowotna ${fmtPLN(tier.premium)}` };
+            }
+            if (mode === 'skala') {
+                const inc = Math.max(0, num(income));
+                const calc = 0.09 * inc;
+                const value = Math.max(calc, minPremium);
+                const why = (value === minPremium)
+                    ? `Skala: 9% × ${fmtPLN(inc)} = ${fmtPLN(calc)} < minimum ${fmtPLN(minPremium)}`
+                    : `Skala: 9% × ${fmtPLN(inc)} = ${fmtPLN(calc)} (powyżej minimum)`;
+                return { value, label: why };
+            }
+            if (mode === 'liniowy') {
+                const inc = Math.max(0, num(income));
+                const calc = 0.049 * inc;
+                const value = Math.max(calc, minPremium);
+                const why = (value === minPremium)
+                    ? `Liniowy: 4,9% × ${fmtPLN(inc)} = ${fmtPLN(calc)} < minimum ${fmtPLN(minPremium)}`
+                    : `Liniowy: 4,9% × ${fmtPLN(inc)} = ${fmtPLN(calc)} (powyżej minimum)`;
+                return { value, label: why };
+            }
+            return { value: 0, label: 'Zdrowotna: nieznany tryb' };
+        }
+
+        // ============================================
+        // MAIN COMPUTE
+        // ============================================
+        function compute() {
+            const year = Number(els.year.value);
+            const month = Number(els.month.value);
+            const socialPackage = els.socialPackage.value;
+            const customBase = els.customBase.value;
+            const isChorobowe = els.isChorobowe.checked;
+            const isFP = els.isFP.checked;
+            const wypadkowe = pctToRate(els.wypadkoweRate.value);
+            const healthMode = els.healthMode.value;
+            const income = els.income.value;
+            const revenue = els.revenue.value;
+            
+            const notes = [];
+            
+            const baseObj = resolveSocialBase(year, socialPackage, customBase);
+            const base = baseObj.base;
+            
+            const minWage = YEARS[year].minWage;
+            let fpEnabled = isFP;
+            
+            if (socialPackage === 'start') {
+                fpEnabled = false;
+                notes.push('Ulga na start: społeczne = 0 zł (FP/chorobowe/wypadkowe też 0).');
+            }
+            if (socialPackage === 'pref') {
+                fpEnabled = false;
+                notes.push('Preferencyjne: FP domyślnie wyłączony (podstawa < minimalnego wynagrodzenia).');
+            }
+            if (socialPackage === 'custom' && base < minWage && fpEnabled) {
+                fpEnabled = false;
+                notes.push('FP automatycznie wyłączony: podstawa < minimalnego wynagrodzenia.');
+            }
+            
+            // Social contributions
+            const emeryt = round2(base * RATES.emerytalna);
+            const rent = round2(base * RATES.rentowa);
+            const chor = isChorobowe ? round2(base * RATES.chorobowa) : 0;
+            const wyp = round2(base * (Number.isFinite(wypadkowe) ? wypadkowe : 0));
+            const fp = fpEnabled ? round2(base * RATES.fp) : 0;
+            
+            if (socialPackage !== 'start' && base === 0) {
+                notes.push('Podstawa = 0 zł → brak składek społecznych (sprawdź dane).');
+            }
+            
+            // Health
+            const health = computeHealth(year, month, healthMode, income, revenue);
+            
+            // Total
+            const sum = round2(emeryt + rent + chor + wyp + fp + health.value);
+            
+            // Render results
+            const rows = [
+                ['Emerytalne', emeryt],
+                ['Rentowe', rent],
+                ['Chorobowe', chor],
+                ['Wypadkowe', wyp],
+                ['Fundusz Pracy', fp],
+                ['Zdrowotne', health.value],
+                ['RAZEM', sum, true]
+            ];
+            
+            els.outBody.innerHTML = rows.map(r => {
+                const isTotal = !!r[2];
+                return `<tr class="${isTotal ? 'total-row' : ''}"><td>${r[0]}</td><td>${fmtPLN(r[1])}</td></tr>`;
+            }).join('');
+            
+            els.baseLabel.textContent = baseObj.label;
+            els.remarks.textContent = notes.length ? notes.join(' ') : '—';
+            
+            // Health info box
+            if (healthMode !== 'none') {
+                els.healthInfoBox.textContent = health.label;
+                els.healthInfoBox.style.display = 'block';
+            } else {
+                els.healthInfoBox.style.display = 'none';
+            }
+            
+            // Dynamic note
+            const minCfg = getMinHealthCfg(year, month);
+            let dynNote = '';
+            if (healthMode === 'skala' || healthMode === 'liniowy') {
+                dynNote = `Min. zdrowotna w tym miesiącu: ${fmtPLN(minCfg.minPremium)} (min. podstawa ${fmtPLN(minCfg.minBase)}).`;
+                els.dynamicNote.className = 'info-box info-box--warn';
+            } else if (healthMode === 'none') {
+                dynNote = 'Zdrowotna wyłączona – pamiętaj, że w praktyce zwykle jest obowiązkowa.';
+                els.dynamicNote.className = 'info-box info-box--danger';
+            }
+            els.dynamicNote.style.display = dynNote ? 'block' : 'none';
+            els.dynamicNote.textContent = dynNote;
+        }
+
+        // ============================================
+        // UI FUNCTIONS
+        // ============================================
+        function updateHealthUI() {
+            const mode = els.healthMode.value;
+            
+            els.healthInputs.classList.toggle('hidden', mode === 'none');
+            els.incomeWrap.classList.toggle('hidden', mode !== 'skala' && mode !== 'liniowy');
+            els.revenueWrap.classList.toggle('hidden', mode !== 'ryczalt');
+            
+            compute();
+        }
+        
+        function updateSocialUI() {
+            const sp = els.socialPackage.value;
+            const custom = (sp === 'custom');
+            
+            els.customBase.disabled = !custom;
+            els.customBase.placeholder = custom ? 'np. 2500,00' : '—';
+            if (!custom) els.customBase.value = '';
+            
+            const disableSocialStuff = (sp === 'start');
+            els.isChorobowe.disabled = disableSocialStuff;
+            els.wypadkoweRate.disabled = disableSocialStuff;
+            els.isFP.disabled = disableSocialStuff || (sp === 'pref');
+            
+            if (disableSocialStuff) {
+                els.isChorobowe.checked = false;
+                els.isFP.checked = false;
+            }
+            if (sp === 'pref') {
+                els.isFP.checked = false;
+            }
+            
+            compute();
+        }
+        
+        function reset() {
+            els.year.value = '2026';
+            els.month.value = '2';
+            els.socialPackage.value = 'full';
+            els.customBase.value = '';
+            els.isChorobowe.checked = true;
+            els.isFP.checked = true;
+            els.isChorobowe.disabled = false;
+            els.isFP.disabled = false;
+            els.wypadkoweRate.value = '1,67';
+            els.healthMode.value = 'none';
+            els.income.value = '';
+            els.revenue.value = '';
+            
+            updateSocialUI();
+            updateHealthUI();
+        }
+        
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        ['change', 'input'].forEach(evt => {
+            els.year.addEventListener(evt, compute);
+            els.month.addEventListener(evt, compute);
+            els.customBase.addEventListener(evt, compute);
+            els.isChorobowe.addEventListener(evt, compute);
+            els.isFP.addEventListener(evt, compute);
+            els.wypadkoweRate.addEventListener(evt, compute);
+            els.income.addEventListener(evt, compute);
+            els.revenue.addEventListener(evt, compute);
+        });
+        
+        els.socialPackage.addEventListener('change', updateSocialUI);
+        els.healthMode.addEventListener('change', updateHealthUI);
+        
+        els.calcBtn.addEventListener('click', compute);
+        els.resetBtn.addEventListener('click', reset);
+        
+        // Init
+        updateSocialUI();
+        updateHealthUI();
+        compute();
+    })();
+    </script>
+</body>
+</html>

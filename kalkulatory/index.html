@@ -43,6 +43,12 @@
           "name": "Kalkulator wynagrodzeń",
           "url": "https://ebiuro24.pl/kalkulatory/wynagrodzenia/",
           "applicationCategory": "FinanceApplication"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "Kalkulator składek ZUS przedsiębiorcy",
+          "url": "https://ebiuro24.pl/kalkulatory/zus/",
+          "applicationCategory": "FinanceApplication"
         }
       ]
     }
@@ -475,22 +481,28 @@
                     </span>
                 </a>
 
-                <!-- Kalkulator składek ZUS - WKRÓTCE -->
-                <div class="calc-card calc-card--disabled">
+                <!-- Kalkulator składek ZUS - AKTYWNY -->
+                <a href="/kalkulatory/zus/" class="calc-card">
                     <div class="calc-card__icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                     </div>
                     <h3 class="calc-card__title">Kalkulator składek ZUS</h3>
-                    <p class="calc-card__desc">Oblicz składki ZUS przedsiębiorcy: społeczne i zdrowotne. Uwzględnia Mały ZUS Plus, preferencyjne składki i ulgi na start.</p>
+                    <p class="calc-card__desc">Oblicz składki ZUS przedsiębiorcy: społeczne i zdrowotne. Uwzględnia ulga na start, preferencyjne składki, pełny ZUS i własną podstawę.</p>
                     <div class="calc-card__tags">
                         <span class="calc-card__tag">Pełny ZUS</span>
-                        <span class="calc-card__tag">Mały ZUS Plus</span>
+                        <span class="calc-card__tag">Preferencyjne</span>
                         <span class="calc-card__tag">Ulga na start</span>
+                        <span class="calc-card__tag">Zdrowotna</span>
                     </div>
-                    <span class="calc-card__badge">Wkrótce</span>
-                </div>
+                    <span class="calc-card__cta">
+                        Otwórz kalkulator
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
 
                 <!-- Kalkulator kosztów pracodawcy - WKRÓTCE -->
                 <div class="calc-card calc-card--disabled">
